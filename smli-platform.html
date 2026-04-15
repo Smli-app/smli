@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMLI — Smart Money Learning Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#2DBE6C; --green-l:#E6F9EF; --green-d:#1a8a4a;
+  --navy:#0D1B2A; --navy-2:#1B2E42;
+  --gold:#F5A623; --gold-l:#FEF6E8;
+  --teal:#0BC5C5; --teal-l:#E6FAFA;
+  --coral:#FF6B6B; --coral-l:#FFF0F0;
+  --purple:#7C6FFF; --purple-l:#F0EEFF;
+  --orange:#FF9A3C; --orange-l:#FFF4E8;
+  --yellow:#FFD166; --yellow-l:#FFF8E7; --yellow-d:#cc9f2a;
+  --text:#0D1B2A; --text-2:#4A5568; --text-3:#9AA5B4;
+  --bg:#F8FAFB; --white:#FFFFFF;
+  --r-sm:12px; --r-md:18px; --r-lg:24px; --r-xl:32px;
+  --shadow:0 4px 24px rgba(13,27,42,0.08);
+  --shadow-lg:0 12px 48px rgba(13,27,42,0.14);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.fraunces{font-family:'Fraunces',serif;}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* ════════════════════════════════════════
+   HOME PAGE
+════════════════════════════════════════ */
+#page-home{background:var(--white);}
+
+/* Nav */
+.home-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(13,27,42,0.08);
+  padding:0 1.5rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-logo{
+  width:38px;height:38px;background:var(--green);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.nav-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);}
+.nav-name span{color:var(--green);}
+.nav-actions{display:flex;gap:10px;align-items:center;}
+.btn-outline{
+  padding:8px 18px;border:2px solid var(--navy);border-radius:50px;
+  background:transparent;color:var(--navy);font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+}
+.btn-outline:hover{background:var(--navy);color:white;}
+.btn-solid{
+  padding:8px 18px;border:none;border-radius:50px;
+  background:var(--green);color:white;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+  box-shadow:0 4px 14px rgba(45,190,108,0.35);
+}
+.btn-solid:hover{background:var(--green-d);transform:translateY(-1px);}
+
+/* Hero */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:6rem 1.5rem 4rem;
+  background:linear-gradient(180deg,#f0fdf6 0%,var(--white) 100%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+  width:800px;height:800px;background:radial-gradient(circle,rgba(45,190,108,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green-l);color:var(--green-d);
+  padding:6px 16px;border-radius:50px;font-size:0.78rem;font-weight:700;
+  margin-bottom:1.5rem;border:1px solid rgba(45,190,108,0.2);
+}
+.hero-title{
+  font-family:'Fraunces',serif;font-size:clamp(2.2rem,6vw,3.8rem);
+  font-weight:900;line-height:1.1;color:var(--navy);margin-bottom:1.25rem;
+  max-width:680px;
+}
+.hero-title span{color:var(--green);}
+.hero-sub{
+  font-size:1.05rem;color:var(--text-2);max-width:480px;
+  line-height:1.7;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:3rem;}
+.hero-btn-teacher{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 28px;background:var(--navy);color:white;
+  border:none;border-radius:16px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+  box-shadow:0 8px 24px rgba(13,27,42,0.2);
+}
+.hero-btn-teacher:hover{background:var(--navy-2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(13,27,42,0.25);}
+.hero-btn-student{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 28px;background:var(--green);color:white;
+  border:none;border-radius:16px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+  box-shadow:0 8px 24px rgba(45,190,108,0.35);
+}
+.hero-btn-student:hover{background:var(--green-d);transform:translateY(-2px);}
+.btn-icon{font-size:1.2rem;}
+.btn-text-wrap{text-align:left;}
+.btn-label{font-size:0.7rem;opacity:0.7;display:block;}
+
+/* Stats strip */
+.stats-strip{
+  display:flex;gap:0;background:var(--navy);border-radius:var(--r-lg);
+  margin:0 1rem;overflow:hidden;
+}
+.stat-item{
+  flex:1;padding:1.25rem 1rem;text-align:center;
+  border-right:1px solid rgba(255,255,255,0.08);
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:var(--green);}
+.stat-label{font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:2px;text-transform:uppercase;letter-spacing:0.04em;}
+
+/* How it works */
+.section{padding:5rem 1.5rem;}
+.section-tag{
+  display:inline-block;background:var(--green-l);color:var(--green-d);
+  padding:5px 14px;border-radius:50px;font-size:0.75rem;font-weight:700;
+  margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.05em;
+}
+.section-title{
+  font-family:'Fraunces',serif;font-size:clamp(1.6rem,4vw,2.4rem);
+  font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:0.75rem;
+}
+.section-sub{font-size:0.95rem;color:var(--text-2);line-height:1.7;max-width:500px;}
+
+.steps-grid{display:flex;flex-direction:column;gap:12px;margin-top:2.5rem;}
+.step-item{
+  display:flex;align-items:flex-start;gap:16px;
+  background:white;border-radius:var(--r-md);padding:1.25rem;
+  border:1px solid rgba(13,27,42,0.06);transition:all 0.2s;
+}
+.step-item:hover{box-shadow:var(--shadow);transform:translateX(4px);}
+.step-num-circle{
+  width:40px;height:40px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:1.1rem;font-weight:900;
+  flex-shrink:0;color:white;
+}
+.step-content-title{font-size:0.92rem;font-weight:700;margin-bottom:3px;}
+.step-content-sub{font-size:0.78rem;color:var(--text-2);line-height:1.5;}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem;}
+.feature-card{
+  background:white;border-radius:var(--r-md);padding:1.25rem;
+  border:1px solid rgba(13,27,42,0.06);
+}
+.feature-icon{font-size:1.8rem;margin-bottom:10px;}
+.feature-title{font-size:0.88rem;font-weight:700;margin-bottom:4px;}
+.feature-desc{font-size:0.75rem;color:var(--text-2);line-height:1.5;}
+
+/* CTA section */
+.cta-section{
+  margin:0 1rem 3rem;background:linear-gradient(135deg,var(--navy),#1B3A5C);
+  border-radius:var(--r-xl);padding:2.5rem 1.5rem;text-align:center;
+}
+.cta-title{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;color:white;margin-bottom:0.75rem;}
+.cta-sub{color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:2rem;line-height:1.6;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-primary{
+  padding:14px 28px;background:var(--green);color:white;border:none;
+  border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+}
+.cta-btn-secondary{
+  padding:14px 28px;background:rgba(255,255,255,0.1);color:white;
+  border:2px solid rgba(255,255,255,0.2);border-radius:14px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+}
+
+/* Footer */
+.home-footer{
+  background:var(--navy);padding:2rem 1.5rem;text-align:center;
+}
+.footer-brand{font-family:'Fraunces',serif;font-size:1rem;color:white;margin-bottom:6px;}
+.footer-text{font-size:0.75rem;color:rgba(255,255,255,0.4);}
+.footer-email{color:var(--green);font-size:0.78rem;margin-top:6px;}
+
+/* ════════════════════════════════════════
+   TEACHER LOGIN PAGE
+════════════════════════════════════════ */
+#page-teacher-login{
+  background:linear-gradient(135deg,var(--navy) 0%,#1B3A5C 100%);
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:2rem;position:relative;overflow:hidden;
+}
+#page-teacher-login::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:400px;height:400px;background:rgba(45,190,108,0.08);
+  border-radius:50%;pointer-events:none;
+}
+.login-card{
+  background:white;border-radius:var(--r-xl);padding:2.5rem;
+  width:100%;max-width:420px;position:relative;z-index:1;
+  box-shadow:0 32px 80px rgba(0,0,0,0.3);
+}
+.login-back{
+  position:absolute;top:1.5rem;left:1.5rem;
+  background:rgba(255,255,255,0.1);color:white;border:none;
+  border-radius:10px;padding:8px 14px;font-size:0.82rem;
+  cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+}
+.login-logo{
+  width:56px;height:56px;background:var(--green);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin:0 auto 1.25rem;
+}
+.login-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;text-align:center;margin-bottom:6px;}
+.login-sub{font-size:0.85rem;color:var(--text-2);text-align:center;margin-bottom:1.75rem;line-height:1.5;}
+.google-btn{
+  width:100%;padding:14px;border:2px solid #eee;border-radius:14px;
+  background:white;display:flex;align-items:center;justify-content:center;gap:12px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:600;
+  cursor:pointer;transition:all 0.2s;color:var(--text);margin-bottom:1rem;
+}
+.google-btn:hover{border-color:#ddd;box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+.google-icon{
+  width:24px;height:24px;background:linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:white;
+}
+.login-divider{text-align:center;color:var(--text-3);font-size:0.8rem;margin:1rem 0;position:relative;}
+.login-divider::before,.login-divider::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:#eee;}
+.login-divider::before{left:0;}.login-divider::after{right:0;}
+.login-field{margin-bottom:1rem;}
+.login-field label{display:block;font-size:0.75rem;font-weight:700;color:var(--text-2);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;}
+.login-field input{
+  width:100%;padding:12px 14px;border:2px solid #eee;border-radius:12px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.92rem;outline:none;transition:border-color 0.2s;
+}
+.login-field input:focus{border-color:var(--green);}
+.login-btn{
+  width:100%;padding:14px;background:var(--navy);color:white;border:none;
+  border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;
+}
+.login-btn:hover{background:var(--navy-2);}
+.login-note{font-size:0.72rem;color:var(--text-3);text-align:center;margin-top:1rem;line-height:1.5;}
+
+/* ════════════════════════════════════════
+   STUDENT JOIN PAGE
+════════════════════════════════════════ */
+#page-student-join{
+  background:linear-gradient(135deg,#0D1B2A 0%,#1a3a2a 100%);
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:2rem;position:relative;overflow:hidden;
+}
+#page-student-join::before{
+  content:'';position:absolute;bottom:-100px;left:-100px;
+  width:400px;height:400px;background:rgba(45,190,108,0.06);
+  border-radius:50%;pointer-events:none;
+}
+
+/* ════════════════════════════════════════
+   TEACHER DASHBOARD
+════════════════════════════════════════ */
+#page-teacher-dashboard{background:var(--bg);}
+.t-nav{
+  background:white;border-bottom:1px solid #f0f0f0;
+  padding:0 1.25rem;height:58px;display:flex;align-items:center;
+  justify-content:space-between;position:sticky;top:0;z-index:50;
+}
+.t-nav-brand{display:flex;align-items:center;gap:8px;}
+.t-nav-logo{width:32px;height:32px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.t-nav-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;}
+.t-nav-right{display:flex;align-items:center;gap:8px;}
+.t-user-chip{
+  display:flex;align-items:center;gap:6px;background:var(--bg);
+  border-radius:20px;padding:5px 12px 5px 6px;font-size:0.78rem;font-weight:600;
+}
+.t-user-avatar{
+  width:26px;height:26px;border-radius:50%;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;font-size:11px;color:white;font-weight:700;
+}
+.t-logout{
+  background:none;border:none;font-size:0.75rem;color:var(--text-3);
+  cursor:pointer;padding:4px 8px;border-radius:8px;
+}
+.t-logout:hover{background:#f5f5f5;color:var(--text);}
+
+.t-body{padding:1.25rem;}
+.t-welcome{
+  background:linear-gradient(135deg,var(--navy),#1B3A5C);
+  border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.25rem;
+}
+.t-welcome-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;color:white;margin-bottom:4px;}
+.t-welcome-sub{font-size:0.82rem;color:rgba(255,255,255,0.55);}
+.t-welcome-stats{display:flex;gap:12px;margin-top:1.25rem;}
+.t-stat{background:rgba(255,255,255,0.08);border-radius:12px;padding:10px 14px;flex:1;text-align:center;}
+.t-stat-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;color:var(--green);}
+.t-stat-label{font-size:0.62rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.04em;}
+
+.section-label{font-size:0.72rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+
+/* Create class btn */
+.create-class-btn{
+  width:100%;padding:14px;background:var(--green);color:white;border:none;
+  border-radius:var(--r-md);font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.92rem;font-weight:700;cursor:pointer;margin-bottom:1.25rem;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 14px rgba(45,190,108,0.3);transition:all 0.2s;
+}
+.create-class-btn:hover{background:var(--green-d);}
+
+/* Class cards */
+.classes-list{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;}
+.class-card{
+  background:white;border-radius:var(--r-md);padding:1.1rem 1.25rem;
+  border:1.5px solid #eee;cursor:pointer;transition:all 0.2s;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.class-card:hover{border-color:var(--green);box-shadow:var(--shadow);}
+.class-card-left{display:flex;align-items:center;gap:12px;}
+.class-icon{
+  width:42px;height:42px;border-radius:12px;background:var(--green-l);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.class-name{font-size:0.92rem;font-weight:700;margin-bottom:2px;}
+.class-meta{font-size:0.72rem;color:var(--text-3);}
+.class-status{
+  font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;
+}
+.status-active{background:var(--green-l);color:var(--green-d);}
+.status-new{background:var(--gold-l);color:#8a5a00;}
+.class-arrow{color:var(--text-3);font-size:1.1rem;}
+
+/* Create class modal */
+.modal-bg{
+  display:none;position:fixed;inset:0;background:rgba(13,27,42,0.6);
+  z-index:200;align-items:flex-end;justify-content:center;
+}
+.modal-bg.open{display:flex;}
+.modal-sheet{
+  background:white;border-radius:28px 28px 0 0;width:100%;max-width:500px;
+  padding:1.75rem 1.5rem;animation:slideUp 0.3s ease;max-height:90vh;overflow-y:auto;
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-handle{width:40px;height:4px;background:#e0e0e0;border-radius:2px;margin:0 auto 1.5rem;}
+.modal-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;margin-bottom:4px;}
+.modal-sub{font-size:0.82rem;color:var(--text-2);margin-bottom:1.5rem;}
+.m-field{margin-bottom:1rem;}
+.m-field label{display:block;font-size:0.72rem;font-weight:700;color:var(--text-2);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;}
+.m-field input,.m-field select{
+  width:100%;padding:11px 14px;border:2px solid #eee;border-radius:12px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;
+  transition:border-color 0.2s;background:white;
+}
+.m-field input:focus,.m-field select:focus{border-color:var(--green);}
+.m-btn{
+  width:100%;padding:14px;background:var(--navy);color:white;border:none;
+  border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.95rem;font-weight:700;cursor:pointer;margin-top:0.5rem;transition:all 0.2s;
+}
+.m-btn:hover{background:var(--navy-2);}
+.m-btn-cancel{
+  width:100%;padding:12px;background:#f5f5f5;color:var(--text-2);border:none;
+  border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.9rem;font-weight:600;cursor:pointer;margin-top:8px;
+}
+
+/* ── CLASS ROOM VIEW (inside teacher dashboard) ── */
+#view-classroom{display:none;}
+.cr-header{
+  background:linear-gradient(135deg,var(--navy),#1B3A5C);
+  padding:1rem 1.25rem 1.5rem;position:relative;
+}
+.cr-back{
+  background:rgba(255,255,255,0.1);color:white;border:none;
+  border-radius:8px;padding:6px 12px;font-size:0.78rem;
+  cursor:pointer;margin-bottom:0.75rem;font-family:'Plus Jakarta Sans',sans-serif;
+}
+.cr-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;color:white;}
+.cr-meta{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px;}
+
+/* Join code banner */
+.join-code-banner{
+  background:var(--green);margin:1.25rem;border-radius:var(--r-md);
+  padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;
+}
+.jc-left{}
+.jc-label{font-size:0.7rem;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+.jc-code{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;color:white;letter-spacing:0.15em;}
+.jc-copy{
+  background:rgba(255,255,255,0.2);color:white;border:none;
+  border-radius:10px;padding:8px 14px;font-size:0.78rem;font-weight:700;
+  cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+/* Students list */
+.students-grid{padding:0 1.25rem;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem;}
+.student-row{
+  background:white;border-radius:12px;padding:10px 14px;
+  display:flex;align-items:center;gap:10px;border:1.5px solid #f0f0f0;
+}
+.s-avatar{
+  width:34px;height:34px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  flex-shrink:0;
+}
+.s-name{font-size:0.85rem;font-weight:700;flex:1;}
+.s-prof{font-size:0.7rem;color:var(--text-3);}
+.s-ef-wrap{display:flex;align-items:center;gap:6px;}
+.s-ef-bar{width:48px;height:5px;background:#f0f0f0;border-radius:3px;overflow:hidden;}
+.s-ef-fill{height:5px;background:var(--green);border-radius:3px;}
+.s-ef-pct{font-size:0.65rem;color:var(--text-3);}
+.s-score{font-family:'Fraunces',serif;font-size:0.9rem;font-weight:900;min-width:28px;text-align:right;}
+
+/* Month control panel */
+.month-control{
+  margin:0 1.25rem 1.25rem;background:white;border-radius:var(--r-md);
+  border:1.5px solid #eee;overflow:hidden;
+}
+.mc-head{
+  padding:1rem 1.25rem;background:var(--bg);
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid #f0f0f0;
+}
+.mc-title{font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:8px;}
+.mc-month-badge{
+  background:var(--navy);color:white;padding:3px 10px;
+  border-radius:20px;font-size:0.7rem;font-weight:700;
+}
+.mc-body{padding:1rem 1.25rem;}
+
+/* Score entry in classroom */
+.score-entry-row{
+  display:flex;align-items:center;gap:10px;padding:8px 0;
+  border-bottom:1px solid #fafafa;
+}
+.score-entry-row:last-child{border-bottom:none;}
+.se-emoji{font-size:1.1rem;width:20px;text-align:center;}
+.se-name{font-size:0.82rem;font-weight:600;flex:1;}
+.se-stepper{display:flex;align-items:center;gap:6px;}
+.se-btn{
+  width:28px;height:28px;border-radius:50%;border:1.5px solid #eee;
+  background:white;font-size:0.9rem;cursor:pointer;display:flex;
+  align-items:center;justify-content:center;font-weight:700;transition:all 0.15s;
+}
+.se-btn:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.se-val{font-family:'Fraunces',serif;font-size:1rem;font-weight:900;min-width:20px;text-align:center;}
+
+/* Event selector in classroom */
+.event-select-grid{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.es-opt{
+  display:flex;align-items:center;gap:8px;padding:8px 10px;
+  border:1.5px solid #eee;border-radius:10px;cursor:pointer;transition:all 0.15s;
+  font-size:0.8rem;font-weight:600;
+}
+.es-opt:hover{border-color:#ccc;}
+.es-opt.active{border-color:var(--coral);background:var(--coral-l);}
+.es-opt.active-none{border-color:var(--green);background:var(--green-l);}
+.es-icon{font-size:1rem;width:20px;text-align:center;}
+.es-name{flex:1;}
+.es-cost{font-size:0.7rem;color:var(--coral);font-weight:700;}
+
+.process-btn-big{
+  width:100%;padding:14px;background:var(--green);color:white;border:none;
+  border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;
+  font-weight:700;cursor:pointer;margin-top:1rem;transition:all 0.2s;
+  box-shadow:0 4px 14px rgba(45,190,108,0.3);display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.process-btn-big:hover{background:var(--green-d);}
+.process-btn-big.waiting{background:#ccc;cursor:not-allowed;box-shadow:none;}
+
+/* Waiting card in classroom */
+.waiting-card{
+  background:linear-gradient(135deg,var(--green-l),#f0fff8);
+  border:1.5px solid var(--green);border-radius:var(--r-md);
+  padding:1.25rem;text-align:center;margin-top:1rem;
+}
+.wc-icon{font-size:2rem;margin-bottom:8px;}
+.wc-title{font-size:0.9rem;font-weight:700;color:var(--green-d);margin-bottom:4px;}
+.wc-sub{font-size:0.78rem;color:var(--green-d);opacity:0.7;}
+.next-month-btn{
+  width:100%;padding:13px;background:var(--navy);color:white;border:none;
+  border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;
+  font-weight:700;cursor:pointer;margin-top:1rem;transition:all 0.2s;
+}
+
+/* ════════════════════════════════════════
+   STUDENT SCREENS (Life Money Lab)
+   — reusing existing LML styles
+════════════════════════════════════════ */
+/* All LML styles preserved below */
+:root {
+  --lml-green:#3DBE7A;--lml-green-l:#E8F8EF;--lml-green-d:#1a8a50;
+  --lml-mint:#A8E6CF;--lml-yellow:#FFD166;--lml-yellow-l:#FFF8E7;
+}
+.lml-screen{display:none;min-height:100vh;background:var(--bg);}
+.lml-screen.active{display:block;}
+
+/* All existing LML CSS classes preserved */
+.screen{display:none;min-height:100vh;}
+.screen.active{display:block;}
+#screen-join{background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center;position:relative;overflow:hidden;}
+.bg-orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;opacity:0.12;animation:pulse 4s ease-in-out infinite;}
+.orb-1{width:400px;height:400px;background:var(--lml-green);top:-100px;left:-100px;}
+.orb-2{width:300px;height:300px;background:#4ECDC4;bottom:-80px;right:-80px;animation-delay:1.5s;}
+.orb-3{width:200px;height:200px;background:#FFD166;top:40%;left:60%;animation-delay:3s;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.join-logo{display:flex;align-items:center;gap:10px;margin-bottom:2rem;}
+.logo-icon{width:52px;height:52px;background:var(--lml-green);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.logo-text{text-align:left;}
+.logo-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:white;}
+.logo-sub{font-size:0.75rem;color:rgba(255,255,255,0.5);}
+.join-headline{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:800;color:white;line-height:1.15;margin-bottom:0.75rem;}
+.join-headline span{color:var(--lml-green);}
+.join-tagline{color:rgba(255,255,255,0.6);font-size:1rem;margin-bottom:2.5rem;line-height:1.6;max-width:420px;}
+.join-card{background:white;border-radius:24px;padding:2rem;width:100%;max-width:420px;box-shadow:0 24px 64px rgba(0,0,0,0.3);}
+.join-card h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;color:var(--text);}
+.field-group{margin-bottom:1rem;}
+.field-group label{display:block;font-size:0.78rem;font-weight:600;color:var(--text-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.field-group input{width:100%;padding:12px 16px;border:2px solid #eee;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;color:var(--text);outline:none;transition:border-color 0.2s;}
+.field-group input:focus{border-color:var(--lml-green);}
+.code-input{letter-spacing:0.3em;font-family:'Fraunces',serif!important;font-size:1.4rem!important;text-align:center;text-transform:uppercase;}
+.join-btn{width:100%;padding:14px;background:var(--lml-green);color:white;border:none;border-radius:14px;font-family:'Fraunces',serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(61,190,122,0.35);margin-top:0.5rem;}
+.join-btn:hover{background:var(--lml-green-d);}
+
+/* Profession screen */
+#screen-profession{background:var(--bg);padding:0 0 4rem;}
+.prof-header{background:linear-gradient(135deg,#1A1A2E,#0F3460);padding:1.5rem 1.5rem 3rem;position:relative;overflow:hidden;}
+.prof-header::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:40px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%);}
+.back-btn{background:rgba(255,255,255,0.1);color:white;border:none;border-radius:10px;padding:8px 14px;font-size:0.85rem;cursor:pointer;margin-bottom:1rem;font-family:'Plus Jakarta Sans',sans-serif;}
+.student-greeting{color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:4px;}
+.prof-headline{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:800;color:white;line-height:1.2;}
+.prof-headline span{color:var(--lml-green);}
+.prof-sub{color:rgba(255,255,255,0.6);font-size:0.9rem;margin-top:6px;}
+.section-pad{padding:0 1.25rem;}
+.section-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin:1.5rem 0 0.75rem;}
+.filter-tabs{display:flex;gap:8px;padding:0 1.25rem;margin-bottom:1rem;overflow-x:auto;}
+.filter-tab{padding:6px 16px;border-radius:20px;border:2px solid #eee;background:white;font-size:0.8rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.15s;color:var(--text-2);}
+.filter-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+.prof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 1.25rem;}
+.prof-card{background:white;border-radius:20px;padding:1.25rem;border:2.5px solid transparent;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+.prof-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0;}
+.prof-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(13,27,42,0.14);}
+.prof-card.selected{border-color:var(--lml-green);box-shadow:0 0 0 4px rgba(61,190,122,0.15);}
+.prof-card.selected::after{content:'✓';position:absolute;top:10px;right:10px;width:22px;height:22px;background:var(--lml-green);color:white;border-radius:50%;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+.prof-emoji{font-size:2rem;margin-bottom:8px;display:block;}
+.prof-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.prof-income{font-size:0.78rem;color:var(--lml-green-d);font-weight:600;}
+.prof-type-badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.65rem;font-weight:700;margin-top:6px;text-transform:uppercase;letter-spacing:0.04em;}
+.badge-salary{background:#E8F8EF;color:var(--lml-green-d);}
+.badge-business{background:#FFF4E8;color:#cc6a00;}
+.badge-gig{background:#F0EEFF;color:#5a3fc0;}
+.risk-dots{display:flex;gap:3px;margin-top:6px;}
+.risk-dot{width:6px;height:6px;border-radius:50%;background:#eee;}
+.risk-dot.active{background:var(--orange);}
+.goal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 1.25rem;}
+.goal-card{background:white;border-radius:14px;padding:1rem;border:2px solid transparent;cursor:pointer;transition:all 0.2s;text-align:center;}
+.goal-card:hover{border-color:#ddd;}
+.goal-card.selected{border-color:var(--yellow-d);background:var(--yellow-l);}
+.goal-emoji{font-size:1.6rem;display:block;margin-bottom:6px;}
+.goal-name{font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.goal-target{font-size:0.72rem;color:var(--text-2);}
+.continue-bar{position:fixed;bottom:0;left:0;right:0;background:white;padding:1rem 1.25rem;box-shadow:0 -4px 24px rgba(13,27,42,0.1);z-index:50;}
+.continue-btn{width:100%;padding:14px;background:var(--navy);color:white;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.continue-btn:hover:not(:disabled){background:var(--navy-2);transform:translateY(-1px);}
+.continue-btn:disabled{background:#ccc;cursor:not-allowed;}
+.pc-green::before{background:var(--lml-green);}
+.pc-blue::before{background:#4ECDC4;}
+.pc-orange::before{background:var(--orange);}
+.pc-purple::before{background:var(--purple);}
+.pc-coral::before{background:var(--coral);}
+.pc-yellow::before{background:var(--yellow-d);}
+
+/* Dashboard */
+#screen-dashboard{background:var(--bg);padding-bottom:80px;}
+.dash-nav{background:white;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0f0f0;position:sticky;top:0;z-index:40;}
+.nav-left{display:flex;align-items:center;gap:10px;}
+.nav-avatar{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;}
+.nav-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:700;}
+.nav-prof{font-size:0.72rem;color:var(--text-2);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.month-badge{background:var(--navy);color:white;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;}
+.stage-badge{background:var(--lml-green-l);color:var(--lml-green-d);padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;}
+.hero-card{margin:1.25rem;border-radius:24px;padding:1.5rem;background:linear-gradient(135deg,#1A1A2E,#0F3460);position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(61,190,122,0.1);border-radius:50%;}
+.hero-label{font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+.hero-amount{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:800;color:white;margin-bottom:4px;}
+.hero-amount span{font-size:1.2rem;color:rgba(255,255,255,0.6);}
+.hero-sub{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.25rem;}
+.hero-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.hb-item{background:rgba(255,255,255,0.08);border-radius:12px;padding:10px;text-align:center;}
+.hb-label{font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px;}
+.hb-val{font-family:'Fraunces',serif;font-size:0.9rem;font-weight:700;color:white;}
+.hb-val.pos{color:var(--lml-green);}
+.hb-val.neg{color:var(--coral);}
+.score-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 1.25rem 1rem;}
+.score-card{background:white;border-radius:14px;padding:1rem;display:flex;align-items:center;gap:10px;}
+.score-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.score-label{font-size:0.68rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;}
+.score-val{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;}
+.score-bar-wrap{height:4px;background:#f0f0f0;border-radius:2px;margin-top:4px;}
+.score-bar{height:4px;border-radius:2px;transition:width 0.8s ease;}
+.section-card{background:white;border-radius:20px;margin:0 1.25rem 1rem;overflow:hidden;}
+.sc-head{padding:1rem 1.25rem 0.75rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f5f5f5;}
+.sc-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;display:flex;align-items:center;gap:8px;}
+.sc-badge{font-size:0.7rem;color:var(--text-3);background:#f5f5f5;padding:3px 8px;border-radius:20px;}
+.sc-body{padding:1rem 1.25rem;}
+.expense-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #fafafa;}
+.expense-row:last-child{border-bottom:none;}
+.exp-left{display:flex;align-items:center;gap:10px;}
+.exp-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.exp-name{font-size:0.85rem;font-weight:600;}
+.exp-type{font-size:0.7rem;color:var(--text-3);}
+.exp-amt{font-family:'Fraunces',serif;font-size:0.9rem;font-weight:700;color:var(--coral);}
+.exp-tag{font-size:0.65rem;font-weight:700;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:0.04em;}
+.tag-fixed{background:#FFE8E8;color:#b83333;}
+.tag-need{background:#FFF4E8;color:#cc6a00;}
+.ef-progress-card{background:linear-gradient(135deg,var(--lml-green-l),#f0fff8);border:2px solid var(--lml-mint);border-radius:14px;padding:1rem;margin:0 1.25rem 1rem;}
+.ef-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.ef-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:700;color:var(--lml-green-d);display:flex;align-items:center;gap:6px;}
+.ef-pct{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:800;color:var(--lml-green-d);}
+.ef-bar-bg{height:10px;background:rgba(61,190,122,0.15);border-radius:5px;margin-bottom:8px;}
+.ef-bar{height:10px;background:var(--lml-green);border-radius:5px;transition:width 1s ease;}
+.ef-labels{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-3);}
+.ef-labels strong{color:var(--lml-green-d);}
+.lock-hint{display:flex;align-items:center;gap:6px;margin-top:8px;padding:8px 10px;background:rgba(61,190,122,0.1);border-radius:10px;}
+.lock-hint span{font-size:0.72rem;color:var(--lml-green-d);font-weight:500;}
+.savings-total-row{display:flex;align-items:center;justify-content:space-between;background:var(--lml-green-l);border-radius:12px;padding:12px 14px;margin-bottom:1rem;}
+.st-label{font-size:0.85rem;font-weight:600;color:var(--lml-green-d);}
+.st-amount{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:800;color:var(--lml-green-d);}
+.bucket-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.bucket-icon{font-size:18px;width:20px;text-align:center;}
+.bucket-info{flex:1;}
+.bucket-name{font-size:0.82rem;font-weight:600;margin-bottom:2px;}
+.bucket-desc{font-size:0.7rem;color:var(--text-3);}
+.bucket-input-wrap{display:flex;align-items:center;gap:6px;}
+.rupee-sign{font-size:0.85rem;color:var(--text-2);font-weight:600;}
+.bucket-input{width:90px;padding:8px 10px;border:2px solid #eee;border-radius:10px;font-family:'Fraunces',serif;font-size:0.9rem;font-weight:700;text-align:right;outline:none;transition:border-color 0.2s;}
+.bucket-input:focus{border-color:var(--lml-green);}
+.want-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:2px solid #eee;border-radius:12px;cursor:pointer;transition:all 0.15s;}
+.want-item.chosen{border-color:var(--purple);background:var(--purple-l);}
+.want-left{display:flex;align-items:center;gap:10px;}
+.want-emoji{font-size:1.2rem;}
+.want-name{font-size:0.85rem;font-weight:600;}
+.want-pct{font-size:0.72rem;color:var(--text-3);}
+.want-price{font-family:'Fraunces',serif;font-size:0.85rem;font-weight:700;color:var(--text-2);}
+.wants-cap-bar{margin-bottom:10px;background:#f5f5f5;border-radius:6px;height:8px;overflow:hidden;}
+.wants-cap-fill{height:8px;background:var(--purple);border-radius:6px;transition:width 0.3s;}
+.wants-cap-label{font-size:0.72rem;color:var(--text-3);display:flex;justify-content:space-between;margin-bottom:4px;}
+.want-options{display:flex;flex-direction:column;gap:8px;}
+.locked-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 1.25rem 1rem;}
+.locked-card{background:white;border-radius:14px;padding:1rem;text-align:center;border:2px dashed #e0e0e0;opacity:0.6;}
+.locked-icon{font-size:1.4rem;margin-bottom:6px;filter:grayscale(1);}
+.locked-name{font-size:0.72rem;font-weight:700;color:var(--text-3);margin-bottom:2px;}
+.locked-cond{font-size:0.62rem;color:var(--text-3);line-height:1.3;}
+.confirm-btn{position:fixed;bottom:0;left:0;right:0;background:white;padding:1rem 1.25rem;box-shadow:0 -4px 24px rgba(13,27,42,0.08);z-index:40;}
+.confirm-inner{background:var(--lml-green);color:white;border:none;border-radius:14px;padding:14px;width:100%;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.confirm-inner:hover{background:var(--lml-green-d);}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;align-items:flex-end;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal-sheet-lml{background:white;border-radius:28px 28px 0 0;width:100%;max-width:500px;padding:1.5rem;max-height:85vh;overflow-y:auto;animation:slideUp 0.3s ease;}
+.modal-handle-lml{width:40px;height:4px;background:#e0e0e0;border-radius:2px;margin:0 auto 1.25rem;}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f5f5f5;}
+.summary-row:last-child{border-bottom:none;}
+.sr-label{font-size:0.85rem;color:var(--text-2);}
+.sr-val{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;}
+.sr-val.green{color:var(--lml-green-d);}
+.sr-val.red{color:var(--coral);}
+.lesson-card-lml{background:linear-gradient(135deg,#1A1A2E,#0F3460);border-radius:16px;padding:1.25rem;margin:1rem 0;}
+.lesson-tag{font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;}
+.lesson-text{font-size:0.88rem;color:white;line-height:1.6;font-style:italic;}
+.modal-btn-lml{width:100%;padding:14px;background:var(--navy);color:white;border:none;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;margin-top:1rem;}
+.demo-toggle-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:#0F3460;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+.demo-label{font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;display:flex;align-items:center;gap:6px;}
+.view-toggle{display:flex;background:rgba(255,255,255,0.1);border-radius:20px;padding:3px;gap:2px;}
+.vt-btn{padding:5px 14px;border-radius:16px;border:none;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.2s;color:rgba(255,255,255,0.6);background:transparent;}
+.vt-btn.active{background:white;color:var(--navy);}
+.teacher-panel{display:none;position:fixed;inset:0;background:var(--bg);z-index:500;overflow-y:auto;padding-top:52px;}
+.teacher-panel.open{display:block;}
+.tp-header{background:linear-gradient(135deg,#0F3460,#1A1A2E);padding:1.25rem 1.25rem 1.5rem;}
+.tp-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:white;margin-bottom:4px;}
+.tp-sub{font-size:0.8rem;color:rgba(255,255,255,0.5);}
+.tp-body{padding:1rem 1.25rem;}
+.step-card{background:white;border-radius:20px;margin-bottom:12px;border:2px solid #eee;overflow:hidden;}
+.step-head{padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--navy);color:white;font-family:'Fraunces',serif;font-size:0.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:10px;}
+.step-num.done{background:var(--lml-green);}
+.step-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;flex:1;}
+.step-status{font-size:0.72rem;color:var(--text-3);}
+.step-body{padding:0 1.25rem 1.25rem;border-top:1px solid #f5f5f5;}
+.score-student-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#fafafa;border-radius:12px;}
+.ssr-left{display:flex;align-items:center;gap:8px;}
+.ssr-emoji{font-size:1.2rem;}
+.ssr-name{font-size:0.85rem;font-weight:600;}
+.ssr-prof{font-size:0.72rem;color:var(--text-3);}
+.score-stepper{display:flex;align-items:center;gap:8px;}
+.ss-btn{width:30px;height:30px;border-radius:50%;border:2px solid #eee;background:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;transition:all 0.15s;color:var(--text);}
+.ss-btn:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.ss-val{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:800;min-width:24px;text-align:center;color:var(--navy);}
+.event-opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid #eee;border-radius:12px;cursor:pointer;transition:all 0.15s;}
+.event-opt:hover{border-color:#ccc;}
+.event-opt.selected-event{border-color:var(--coral);background:var(--coral-l);}
+.event-opt-icon{font-size:1.3rem;width:20px;text-align:center;}
+.event-opt-name{font-size:0.85rem;font-weight:600;flex:1;}
+.event-opt-cost{font-size:0.75rem;color:var(--coral);font-weight:700;}
+.event-level{font-size:0.65rem;padding:2px 7px;border-radius:10px;font-weight:700;}
+.lvl-1{background:#FFF4E8;color:#cc6a00;}
+.lvl-2{background:#FFE8E8;color:#b83333;}
+.process-btn{width:100%;padding:14px;background:var(--lml-green);color:white;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;margin-top:1rem;transition:all 0.2s;box-shadow:0 4px 16px rgba(61,190,122,0.3);}
+.process-btn:hover{background:var(--lml-green-d);}
+.co-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fafafa;border-radius:12px;}
+.co-emoji{font-size:1.1rem;}
+.co-name{font-size:0.82rem;font-weight:600;flex:1;}
+.co-ef-bar{width:60px;height:6px;background:#eee;border-radius:3px;overflow:hidden;}
+.co-ef-fill{height:6px;background:var(--lml-green);border-radius:3px;}
+.waiting-overlay{display:none;position:fixed;inset:0;background:rgba(26,26,46,0.85);z-index:200;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;}
+.waiting-overlay.show{display:flex;}
+.waiting-icon{font-size:3rem;margin-bottom:1rem;animation:wspin 2s linear infinite;}
+@keyframes wspin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.waiting-title{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:white;margin-bottom:0.5rem;}
+.waiting-sub{color:rgba(255,255,255,0.6);font-size:0.9rem;}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:12px 20px;border-radius:50px;font-size:0.85rem;font-weight:600;opacity:0;transition:all 0.3s;z-index:9999;white-space:nowrap;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(min-width:500px){
+  .prof-grid{grid-template-columns:repeat(3,1fr);}
+  .goal-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <nav class="home-nav">
+    <div class="nav-brand">
+      <div class="nav-logo">💰</div>
+      <div class="nav-name">SM<span>LI</span></div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-outline" onclick="showPage('page-teacher-login')">Teacher Login</button>
+      <button class="btn-solid" onclick="showPage('page-student-join')">Student Join</button>
+      <button onclick="showPage('page-setup')" style="background:none;border:none;color:var(--text-3);font-size:0.75rem;cursor:pointer;padding:4px 8px;" title="School Setup">⚙️</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-tag">🏦 Financial Literacy for Schools</div>
+    <h1 class="hero-title fraunces">
+      Where students learn to<br><span>manage real money</span>
+    </h1>
+    <p class="hero-sub">
+      Life Money Lab — India's first classroom-based personal finance simulation for Grade 5–8. Students earn, spend, save and invest — safely, in class.
+    </p>
+    <div class="hero-btns">
+      <button class="hero-btn-teacher" onclick="showPage('page-teacher-login')">
+        <span class="btn-icon">👩‍🏫</span>
+        <div class="btn-text-wrap">
+          <span class="btn-label">For Teachers</span>
+          Teacher Login
+        </div>
+      </button>
+      <button class="hero-btn-student" onclick="showPage('page-student-join')">
+        <span class="btn-icon">👨‍🎓</span>
+        <div class="btn-text-wrap">
+          <span class="btn-label">For Students</span>
+          Join with Code
+        </div>
+      </button>
+    </div>
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Stages</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">22</div>
+        <div class="stat-label">Sessions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40</div>
+        <div class="stat-label">Students/Class</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5–8</div>
+        <div class="stat-label">Grade</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg);">
+    <div style="padding:0 1.5rem;">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title fraunces">A real financial life.<br>In the classroom.</h2>
+      <p class="section-sub">Students don't just learn about money — they experience it through a simulation that mirrors real life.</p>
+    </div>
+    <div class="steps-grid" style="padding:0 1.5rem;">
+      <div class="step-item">
+        <div class="step-num-circle" style="background:var(--navy);">1</div>
+        <div>
+          <div class="step-content-title">Choose Your Profession</div>
+          <div class="step-content-sub">Doctor, Farmer, Software Engineer, Street Food Vendor — each with different income and risk levels.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-circle" style="background:var(--green);">2</div>
+        <div>
+          <div class="step-content-title">Earn Income Through Activities</div>
+          <div class="step-content-sub">Teacher runs activities. Score determines monthly income. Better performance = higher earnings.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-circle" style="background:var(--gold);">3</div>
+        <div>
+          <div class="step-content-title">Pay Real Expenses Every Month</div>
+          <div class="step-content-sub">Rent, food, transport, utilities — all proportional to income. No one escapes expenses.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-circle" style="background:var(--teal);">4</div>
+        <div>
+          <div class="step-content-title">Build Emergency Fund First</div>
+          <div class="step-content-sub">Only students who save 3 months of expenses unlock investments. The correct financial order.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-circle" style="background:var(--purple);">5</div>
+        <div>
+          <div class="step-content-title">Face Life Events</div>
+          <div class="step-content-sub">Medical emergency, vehicle breakdown, storm damage — same event hits everyone differently based on preparation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:white;padding-top:3rem;padding-bottom:3rem;">
+    <div style="padding:0 1.5rem;">
+      <div class="section-tag">What Students Learn</div>
+      <h2 class="section-title fraunces">Lessons adults<br>wish they had</h2>
+    </div>
+    <div class="features-grid" style="padding:0 1.5rem;">
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title">Income & Tax</div>
+        <div class="feature-desc">How salary is earned, why tax is deducted, and what take-home pay really means.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <div class="feature-title">Fixed Expenses</div>
+        <div class="feature-desc">Rent, food, transport hit every month. No choice. Proportional to income.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🟢</div>
+        <div class="feature-title">Emergency Fund</div>
+        <div class="feature-desc">3 months of expenses saved before anything else. The foundation of financial safety.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Investments</div>
+        <div class="feature-desc">FD, Mutual Fund, SIP — unlocked only after emergency fund is built.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-title">Insurance</div>
+        <div class="feature-desc">One medical event can wipe out years of savings. Insurance prevents that.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💳</div>
+        <div class="feature-title">Loans</div>
+        <div class="feature-desc">Good debt vs bad debt. EMI pressure. Why banks reject lifestyle loans.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="cta-title fraunces">Ready to bring Life Money Lab to your school?</div>
+    <div class="cta-sub">Join as a Founding Partner school and give your students a financial education that lasts a lifetime.</div>
+    <div class="cta-btns">
+      <button class="cta-btn-primary" onclick="showPage('page-teacher-login')">👩‍🏫 Teacher Login</button>
+      <button class="cta-btn-secondary" onclick="showPage('page-student-join')">👨‍🎓 Student Join</button>
+    </div>
+  </div>
+
+  <footer class="home-footer">
+    <div class="footer-brand fraunces">Smart Money Learning Institute</div>
+    <div class="footer-text">Financial literacy for every Indian classroom</div>
+    <div class="footer-email">smartmoneylearninginstitute@gmail.com</div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════
+     TEACHER LOGIN — clean, simple
+════════════════════════════════════ -->
+<div class="page" id="page-teacher-login" style="position:relative;z-index:400;">
+  <div style="background:linear-gradient(135deg,var(--navy) 0%,#1B3A5C 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;overflow:hidden;">
+
+    <!-- Back button -->
+    <button onclick="showPage('page-home')"
+      style="position:absolute;top:1.5rem;left:1.5rem;background:rgba(255,255,255,0.1);color:white;border:none;border-radius:10px;padding:8px 16px;font-size:0.85rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;z-index:10;">
+      ← Back
+    </button>
+
+    <!-- Login card -->
+    <div style="background:white;border-radius:24px;padding:2.5rem;width:100%;max-width:400px;box-shadow:0 32px 80px rgba(0,0,0,0.3);position:relative;z-index:10;">
+
+      <!-- Logo -->
+      <div style="width:56px;height:56px;background:var(--green);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 1.25rem;">👩‍🏫</div>
+
+      <div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;text-align:center;margin-bottom:6px;color:var(--navy);">Teacher Login</div>
+      <div style="font-size:0.85rem;color:var(--text-2);text-align:center;margin-bottom:1.75rem;line-height:1.5;">Sign in to manage your classes and run Life Money Lab</div>
+
+      <!-- Email field -->
+      <div style="margin-bottom:1rem;">
+        <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--text-2);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;">Email</label>
+        <input type="email" id="teacher-email" placeholder="your@gmail.com"
+          style="width:100%;padding:12px 14px;border:2px solid #eee;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.92rem;outline:none;transition:border-color 0.2s;color:var(--navy);"
+          onfocus="this.style.borderColor='var(--green)'"
+          onblur="this.style.borderColor='#eee'" />
+      </div>
+
+      <!-- Password field -->
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--text-2);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em;">Password</label>
+        <input type="password" id="teacher-password" placeholder="••••••••"
+          style="width:100%;padding:12px 14px;border:2px solid #eee;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.92rem;outline:none;transition:border-color 0.2s;color:var(--navy);"
+          onfocus="this.style.borderColor='var(--green)'"
+          onblur="this.style.borderColor='#eee'"
+          onkeydown="if(event.key==='Enter')teacherEmailLogin()" />
+      </div>
+
+      <!-- Login button -->
+      <button onclick="teacherEmailLogin()"
+        style="width:100%;padding:14px;background:var(--navy);color:white;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;margin-bottom:1rem;"
+        onmouseover="this.style.background='#1B3A5C'"
+        onmouseout="this.style.background='var(--navy)'">
+        Login →
+      </button>
+
+      <!-- Divider -->
+      <div style="text-align:center;color:var(--text-3);font-size:0.8rem;margin:0.75rem 0;position:relative;">
+        <span style="background:white;padding:0 10px;position:relative;z-index:1;">or</span>
+        <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:#eee;z-index:0;"></div>
+      </div>
+
+      <!-- Google button -->
+      <button onclick="teacherGoogleLogin()"
+        style="width:100%;padding:12px 14px;border:2px solid #eee;border-radius:14px;background:white;display:flex;align-items:center;justify-content:center;gap:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.2s;color:var(--navy);"
+        onmouseover="this.style.borderColor='#ddd';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'"
+        onmouseout="this.style.borderColor='#eee';this.style.boxShadow='none'">
+        <div style="width:22px;height:22px;background:linear-gradient(135deg,#4285F4,#34A853);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white;">G</div>
+        Continue with Google (Gmail)
+      </button>
+
+      <div style="font-size:0.72rem;color:var(--text-3);text-align:center;margin-top:1.25rem;line-height:1.5;">
+        New teacher? Contact SMLI to get your account set up.<br>
+        <span style="color:var(--green);">smartmoneylearninginstitute@gmail.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     STUDENT JOIN — 3 steps
+     Step 1: Enter class code
+     Step 2: Pick your name from list
+     Step 3: Enter PIN
+════════════════════════════════════ -->
+<div class="page" id="page-student-join">
+  <div style="background:linear-gradient(135deg,#0D1B2A 0%,#1a3a2a 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:3rem 1.5rem 2rem;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;background:rgba(45,190,108,0.06);border-radius:50%;pointer-events:none;"></div>
+
+    <!-- Logo -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:2rem;">
+      <div style="width:44px;height:44px;background:var(--green);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">💰</div>
+      <div>
+        <div style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:white;">Life Money Lab</div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);">by SMLI · Grade 5–8</div>
+      </div>
+    </div>
+
+    <!-- STEP 1: Enter code -->
+    <div id="sj-step1" style="width:100%;max-width:400px;">
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:900;color:white;margin-bottom:8px;">Join Your Class</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:0.9rem;">Enter the code your teacher gave you</div>
+      </div>
+      <div style="background:white;border-radius:24px;padding:2rem;box-shadow:0 24px 64px rgba(0,0,0,0.3);">
+        <div class="field-group">
+          <label>Class Code</label>
+          <input type="text" class="code-input" id="input-code" placeholder="ABC123" maxlength="6" style="font-size:1.8rem;letter-spacing:0.4em;text-align:center;" />
+        </div>
+        <button class="join-btn" onclick="enterCode()" style="margin-top:0.5rem;">Find My Class →</button>
+        <div style="text-align:center;margin-top:1rem;">
+          <button onclick="showPage('page-home')" style="background:none;border:none;color:var(--text-3);font-size:0.78rem;cursor:pointer;">← Back to home</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Pick name from list -->
+    <div id="sj-step2" style="width:100%;max-width:400px;display:none;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;">
+        <button onclick="backToStep1()" style="background:rgba(255,255,255,0.1);color:white;border:none;border-radius:8px;padding:6px 12px;font-size:0.78rem;cursor:pointer;">← Back</button>
+        <div>
+          <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;color:white;" id="sj-class-name">Class Name</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Tap your name from the list below</div>
+        </div>
+      </div>
+      <div style="background:white;border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.25);">
+        <div style="padding:1rem 1.25rem;background:var(--bg);border-bottom:1px solid #f0f0f0;">
+          <input type="text" id="sj-search" placeholder="🔍 Search your name..." oninput="filterStudentList()" style="width:100%;padding:10px 14px;border:2px solid #eee;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;outline:none;" />
+        </div>
+        <div id="sj-name-list" style="max-height:50vh;overflow-y:auto;padding:0.5rem;"></div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Enter PIN -->
+    <div id="sj-step3" style="width:100%;max-width:400px;display:none;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;">
+        <button onclick="backToStep2()" style="background:rgba(255,255,255,0.1);color:white;border:none;border-radius:8px;padding:6px 12px;font-size:0.78rem;cursor:pointer;">← Back</button>
+        <div>
+          <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;color:white;">Verify It's You</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Enter your PIN to continue</div>
+        </div>
+      </div>
+      <div style="background:white;border-radius:24px;padding:2rem;box-shadow:0 24px 64px rgba(0,0,0,0.3);">
+        <div style="text-align:center;margin-bottom:1.5rem;">
+          <div style="font-size:2.5rem;margin-bottom:8px;" id="sj-selected-emoji">👤</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:800;margin-bottom:4px;" id="sj-selected-name">Name</div>
+          <div style="font-size:0.78rem;color:var(--text-2);" id="sj-selected-class">Class</div>
+        </div>
+        <div class="field-group">
+          <label>Your PIN</label>
+          <input type="password" id="input-pin" placeholder="Enter PIN" style="font-size:1.4rem;letter-spacing:0.3em;text-align:center;" maxlength="10" onkeydown="if(event.key==='Enter')verifyPin()" />
+        </div>
+        <div id="pin-error" style="color:var(--coral);font-size:0.8rem;text-align:center;margin-bottom:0.5rem;display:none;">❌ Wrong PIN. Try again.</div>
+        <button class="join-btn" onclick="verifyPin()">Enter Class →</button>
+        <div style="font-size:0.72rem;color:var(--text-3);text-align:center;margin-top:1rem;">Forgot your PIN? Ask your teacher.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TEACHER DASHBOARD
+════════════════════════════════════ -->
+<div class="page" id="page-teacher-dashboard">
+  <div id="view-classes">
+    <div class="t-nav">
+      <div class="t-nav-brand">
+        <div class="t-nav-logo">💰</div>
+        <div class="t-nav-name fraunces">SMLI</div>
+      </div>
+      <div class="t-nav-right">
+        <div class="t-user-chip">
+          <div class="t-user-avatar" id="t-avatar-initials">T</div>
+          <span id="t-user-name">Teacher</span>
+        </div>
+        <button class="t-logout" onclick="showPage('page-home')">Logout</button>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-welcome">
+        <div class="t-welcome-title fraunces" id="t-welcome-title">Good morning! 👋</div>
+        <div class="t-welcome-sub">Manage your Life Money Lab classes</div>
+        <div class="t-welcome-stats">
+          <div class="t-stat">
+            <div class="t-stat-num" id="t-total-classes">0</div>
+            <div class="t-stat-label">Classes</div>
+          </div>
+          <div class="t-stat">
+            <div class="t-stat-num" id="t-total-students">0</div>
+            <div class="t-stat-label">Students</div>
+          </div>
+          <div class="t-stat">
+            <div class="t-stat-num" id="t-active-month">—</div>
+            <div class="t-stat-label">Active Month</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="create-class-btn" onclick="openCreateClass()">
+        ＋ Create New Class
+      </button>
+
+      <div class="section-label">My Classes</div>
+      <div class="classes-list" id="classes-list">
+        <div style="text-align:center;padding:2rem;color:var(--text-3);font-size:0.85rem;">
+          No classes yet. Create your first class above.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classroom view -->
+  <div id="view-classroom">
+    <div class="cr-header">
+      <button class="cr-back" onclick="backToClasses()">← All Classes</button>
+      <div class="cr-title fraunces" id="cr-title">Class Name</div>
+      <div class="cr-meta" id="cr-meta">0 students · Month 1</div>
+    </div>
+
+    <!-- Join code -->
+    <div class="join-code-banner">
+      <div class="jc-left">
+        <div class="jc-label">Student Join Code</div>
+        <div class="jc-code" id="cr-join-code">------</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="jc-copy" onclick="syncClassFromSheet()" style="background:rgba(255,255,255,0.15);">🔄 Sync</button>
+        <button class="jc-copy" onclick="openSheetConnect(currentClassId)">📊 Sheet</button>
+        <button class="jc-copy" onclick="copyJoinCode()">Copy Code</button>
+      </div>
+    </div>
+
+    <!-- Students list -->
+    <div style="padding:0 1.25rem;margin-bottom:0.5rem;">
+      <div class="section-label" id="cr-students-label">Students (0)</div>
+    </div>
+    <div class="students-grid" id="cr-students-list">
+      <div style="text-align:center;padding:1.5rem;color:var(--text-3);font-size:0.82rem;background:white;border-radius:12px;">
+        Waiting for students to join with the code above...
+      </div>
+    </div>
+
+    <!-- Month control -->
+    <div class="month-control">
+      <div class="mc-head">
+        <div class="mc-title">
+          📋 Month Control
+          <span class="mc-month-badge" id="mc-month-badge">Month 1</span>
+        </div>
+      </div>
+      <div class="mc-body" id="mc-body">
+        <!-- Rendered by renderMonthControl() -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     STUDENT LIFE MONEY LAB
+════════════════════════════════════ -->
+
+<!-- Profession Selection -->
+<div class="page" id="page-profession">
+  <div id="screen-profession" style="display:block;">
+    <div class="prof-header">
+      <div class="student-greeting" id="greeting-name">Hello, Student!</div>
+      <div class="prof-headline fraunces">Choose your <span>profession</span></div>
+      <div class="prof-sub">Your income, expenses and financial journey depend on this.</div>
+    </div>
+    <div style="padding:1rem 1.25rem 0;">
+      <div class="filter-tabs" id="filter-tabs">
+        <button class="filter-tab active" onclick="filterProf('all',this)">All</button>
+        <button class="filter-tab" onclick="filterProf('salary',this)">💼 Salaried</button>
+        <button class="filter-tab" onclick="filterProf('business',this)">🏪 Business</button>
+        <button class="filter-tab" onclick="filterProf('gig',this)">🛵 Gig</button>
+      </div>
+    </div>
+    <div class="prof-grid" id="prof-grid"></div>
+    <div class="section-title" style="padding:0 1.25rem;margin-top:1.5rem;">Set your life goal</div>
+    <div class="goal-grid" id="goal-grid"></div>
+    <div style="height:80px;"></div>
+    <div class="continue-bar">
+      <button class="continue-btn" id="continue-btn" onclick="goToDashboard()" disabled>Choose a profession to continue</button>
+    </div>
+  </div>
+</div>
+
+<!-- Student Dashboard -->
+<div class="page" id="page-dashboard">
+  <div id="screen-dashboard" style="display:block;">
+    <div class="dash-nav">
+      <div class="nav-left">
+        <div class="nav-avatar" id="nav-avatar">👤</div>
+        <div>
+          <div class="nav-name" id="nav-name">Student</div>
+          <div class="nav-prof" id="nav-prof">Profession</div>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="stage-badge">Stage 1</div>
+        <div class="month-badge" id="month-badge">Month 1</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-label">Your Total Balance</div>
+      <div class="hero-amount" id="hero-income"><span>₹</span>0</div>
+      <div class="hero-sub" id="hero-sub">Previous savings + this month's income</div>
+      <div class="hero-breakdown">
+        <div class="hb-item"><div class="hb-label">Prev Savings</div><div class="hb-val pos" id="hb-gross">₹0</div></div>
+        <div class="hb-item"><div class="hb-label">This Month</div><div class="hb-val pos" id="hb-net">₹0</div></div>
+        <div class="hb-item"><div class="hb-label">Tax</div><div class="hb-val neg" id="hb-tax">-₹0</div></div>
+      </div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-card">
+        <div class="score-icon" style="background:#E8F8EF;">💰</div>
+        <div style="flex:1;">
+          <div class="score-label">Financial Health</div>
+          <div class="score-val" id="fh-score" style="color:var(--lml-green-d);">20</div>
+          <div class="score-bar-wrap"><div class="score-bar" id="fh-bar" style="width:20%;background:var(--lml-green);"></div></div>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-icon" style="background:#FFF4E8;">😊</div>
+        <div style="flex:1;">
+          <div class="score-label">Happiness</div>
+          <div class="score-val" id="hp-score" style="color:var(--orange);">50</div>
+          <div class="score-bar-wrap"><div class="score-bar" id="hp-bar" style="width:50%;background:var(--orange);"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ef-progress-card">
+      <div class="ef-top">
+        <div class="ef-title">🟢 Emergency Fund</div>
+        <div class="ef-pct" id="ef-pct">0%</div>
+      </div>
+      <div class="ef-bar-bg"><div class="ef-bar" id="ef-bar" style="width:0%"></div></div>
+      <div class="ef-labels">
+        <span>Saved: <strong id="ef-saved">₹0</strong></span>
+        <span>Target: <strong id="ef-target">₹0</strong></span>
+      </div>
+      <div class="lock-hint"><span>🔒</span><span id="ef-hint">Build your emergency fund to unlock Investments</span></div>
+    </div>
+
+    <div class="section-card">
+      <div class="sc-head"><div class="sc-title">🏠 This Month's Expenses</div><div class="sc-badge" id="total-exp-badge">₹0 total</div></div>
+      <div class="sc-body" id="expenses-body"></div>
+    </div>
+
+    <div class="section-card">
+      <div class="sc-head"><div class="sc-title">✨ Wants This Month</div><div class="sc-badge">Cap: 20% income</div></div>
+      <div class="sc-body">
+        <div class="wants-cap-label"><span>Wants spent</span><span id="wants-used-label">₹0 / ₹0</span></div>
+        <div class="wants-cap-bar"><div class="wants-cap-fill" id="wants-cap-fill" style="width:0%"></div></div>
+        <div class="want-options" id="wants-options"></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="sc-head"><div class="sc-title">💼 Allocate Your Savings</div><div class="sc-badge" id="remaining-badge">₹0 left</div></div>
+      <div class="sc-body">
+        <div class="savings-total-row"><div class="st-label">Available to save</div><div class="st-amount" id="avail-save">₹0</div></div>
+        <div style="margin-bottom:14px;">
+          <div style="font-size:0.72rem;color:var(--text-3);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Quick Allocate</div>
+          <div style="display:flex;gap:8px;">
+            <button onclick="quickAllocate('ef')" style="flex:1;padding:8px 6px;background:var(--lml-green-l);border:2px solid var(--lml-mint);border-radius:10px;font-size:0.72rem;font-weight:700;color:var(--lml-green-d);cursor:pointer;">🟢 All to Emergency Fund</button>
+            <button onclick="quickAllocate('split')" style="flex:1;padding:8px 6px;background:#F0EEFF;border:2px solid #c8c0ff;border-radius:10px;font-size:0.72rem;font-weight:700;color:#4a3fc0;cursor:pointer;">⚖️ Split 50/30/20</button>
+          </div>
+        </div>
+        <div class="bucket-row">
+          <div class="bucket-icon">🟢</div>
+          <div class="bucket-info"><div class="bucket-name">Emergency Fund</div><div class="bucket-desc">3 months expenses · Unlocks investments</div></div>
+          <div class="bucket-input-wrap"><span class="rupee-sign">₹</span><input type="number" class="bucket-input" id="bucket-ef" value="0" min="0" onchange="updateBuckets()" oninput="updateBuckets()" /></div>
+        </div>
+        <div class="bucket-row">
+          <div class="bucket-icon">🟡</div>
+          <div class="bucket-info"><div class="bucket-name">Short Term Savings</div><div class="bucket-desc">For planned needs · Festivals, repairs</div></div>
+          <div class="bucket-input-wrap"><span class="rupee-sign">₹</span><input type="number" class="bucket-input" id="bucket-st" value="0" min="0" onchange="updateBuckets()" oninput="updateBuckets()" /></div>
+        </div>
+        <div class="bucket-row">
+          <div class="bucket-icon">🔵</div>
+          <div class="bucket-info"><div class="bucket-name">Long Term Savings</div><div class="bucket-desc">Earns 4% interest · Becomes investments</div></div>
+          <div class="bucket-input-wrap"><span class="rupee-sign">₹</span><input type="number" class="bucket-input" id="bucket-lt" value="0" min="0" onchange="updateBuckets()" oninput="updateBuckets()" /></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:10px;background:#fafafa;border-radius:10px;">
+          <span style="font-size:0.82rem;color:var(--text-2);">Unallocated (lifestyle)</span>
+          <span style="font-family:'Fraunces',serif;font-weight:700;font-size:0.9rem;" id="unallocated-amt">₹0</span>
+        </div>
+        <div style="margin-top:14px;background:linear-gradient(135deg,#1A1A2E,#0F3460);border-radius:14px;padding:1rem;">
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Total Savings — All Months</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+            <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:8px;text-align:center;"><div style="font-size:0.62rem;color:rgba(255,255,255,0.4);margin-bottom:3px;">🟢 Emergency</div><div style="font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:#3DBE7A;" id="total-ef-display">₹0</div></div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:8px;text-align:center;"><div style="font-size:0.62rem;color:rgba(255,255,255,0.4);margin-bottom:3px;">🟡 Short Term</div><div style="font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:#FFD166;" id="total-st-display">₹0</div></div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:8px;text-align:center;"><div style="font-size:0.62rem;color:rgba(255,255,255,0.4);margin-bottom:3px;">🔵 Long Term</div><div style="font-family:'Fraunces',serif;font-size:0.82rem;font-weight:700;color:#4ECDC4;" id="total-lt-display">₹0</div></div>
+          </div>
+          <div style="margin-top:10px;border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.5);">Total net worth</span>
+            <span style="font-family:'Fraunces',serif;font-size:1rem;font-weight:800;color:white;" id="total-networth-display">₹0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin:0 1.25rem 0.5rem;"><div class="section-title" style="margin:0 0 0.75rem;">Coming next</div></div>
+    <div class="locked-stages">
+      <div class="locked-card"><div class="locked-icon">📈</div><div class="locked-name">Investments</div><div class="locked-cond">Build emergency fund first</div></div>
+      <div class="locked-card"><div class="locked-icon">🛡️</div><div class="locked-name">Insurance</div><div class="locked-cond">After investments + session</div></div>
+      <div class="locked-card"><div class="locked-icon">💳</div><div class="locked-name">Loans</div><div class="locked-cond">After insurance + valid reason</div></div>
+    </div>
+
+    <div style="height:80px;"></div>
+    <div class="confirm-btn">
+      <button class="confirm-inner" id="confirm-month-btn" onclick="confirmMonth()">✅ Confirm Month & Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Summary Modal -->
+<div class="modal-overlay" id="summary-modal">
+  <div class="modal-sheet-lml">
+    <div class="modal-handle-lml"></div>
+    <div style="font-family:'Fraunces',serif;font-size:1.2rem;font-weight:800;margin-bottom:4px;" id="modal-title">Month 1 Complete!</div>
+    <div style="font-size:0.85rem;color:var(--text-2);margin-bottom:1.25rem;" id="modal-sub">Financial summary</div>
+    <div id="modal-summary-rows"></div>
+    <div class="lesson-card-lml"><div class="lesson-tag">This month's lesson</div><div class="lesson-text" id="modal-lesson"></div></div>
+    <button class="modal-btn-lml" id="modal-close-btn" onclick="closeModal()">Done</button>
+  </div>
+</div>
+
+<!-- Demo Teacher Toggle (for demo mode only) -->
+<div class="demo-toggle-bar" id="demo-toggle-bar" style="display:none;">
+  <div class="demo-label">🎓 Demo Mode</div>
+  <div class="view-toggle">
+    <button class="vt-btn active" id="vt-student" onclick="switchView('student')">👨‍🎓 Student</button>
+    <button class="vt-btn" id="vt-teacher" onclick="switchView('teacher')">👩‍🏫 Teacher</button>
+  </div>
+</div>
+
+<!-- Teacher Panel (demo mode) -->
+<div class="teacher-panel" id="teacher-panel">
+  <div class="tp-header">
+    <div class="tp-title fraunces">👩‍🏫 Teacher Control Panel</div>
+    <div class="tp-sub" id="tp-sub-text">Demo Class · Month 1 · 1 student</div>
+  </div>
+  <div class="tp-body" id="tp-body"></div>
+</div>
+
+<!-- Waiting Overlay -->
+<div class="waiting-overlay" id="waiting-overlay">
+  <div class="waiting-icon">⏳</div>
+  <div class="waiting-title fraunces">Waiting for Teacher...</div>
+  <div class="waiting-sub">Your teacher is processing this month.<br>Your dashboard will unlock shortly.</div>
+  <div style="margin-top:2rem;display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;">
+    <button onclick="saveAndExit()" style="padding:12px 20px;background:var(--green);color:white;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;">
+      ✅ Save & Exit for Today
+    </button>
+    <button onclick="logoutStudent()" style="padding:10px 20px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:2px solid rgba(255,255,255,0.2);border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;">
+      🚪 Logout
+    </button>
+  </div>
+  <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:1rem;">Your progress is saved automatically</div>
+</div>
+
+<!-- Create Class Modal -->
+<div class="modal-bg" id="create-class-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title fraunces">Create New Class</div>
+    <div class="modal-sub">Set up a new Life Money Lab classroom</div>
+    <div class="m-field">
+      <label>Class Name</label>
+      <input type="text" id="new-class-name" placeholder="e.g. Grade 6A, Section B" />
+    </div>
+    <div class="m-field">
+      <label>Grade</label>
+      <select id="new-class-grade">
+        <option value="5">Grade 5</option>
+        <option value="6" selected>Grade 6</option>
+        <option value="7">Grade 7</option>
+        <option value="8">Grade 8</option>
+      </select>
+    </div>
+    <div class="m-field">
+      <label>Academic Year</label>
+      <input type="text" id="new-class-year" placeholder="2025-26" value="2025-26" />
+    </div>
+    <div class="m-field">
+      <label>Expected Students</label>
+      <input type="number" id="new-class-students" placeholder="30" value="30" min="1" max="50" />
+    </div>
+    <button class="m-btn" onclick="createClass()">Create Class →</button>
+    <button class="m-btn-cancel" onclick="closeCreateClass()">Cancel</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ════════════════════════════════════
+     SCHOOL SETUP PAGE
+════════════════════════════════════ -->
+<div class="page" id="page-setup">
+  <div style="background:linear-gradient(135deg,var(--navy),#1B3A5C);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;position:relative;">
+    <button onclick="showPage('page-home')" style="position:absolute;top:1.5rem;left:1.5rem;background:rgba(255,255,255,0.1);color:white;border:none;border-radius:10px;padding:8px 16px;font-size:0.85rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">← Back</button>
+
+    <div style="width:100%;max-width:440px;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div style="font-size:2.5rem;margin-bottom:10px;">⚙️</div>
+        <div style="font-family:'Fraunces',serif;font-size:1.8rem;font-weight:900;color:white;margin-bottom:8px;">School Setup</div>
+        <div style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.6;">Do this once on your laptop.<br>Download and share the file — students join from any device.</div>
+      </div>
+
+      <div style="background:white;border-radius:20px;padding:1.75rem;">
+        <div style="font-family:'Fraunces',serif;font-size:1rem;font-weight:800;margin-bottom:4px;">Step 1 — Paste your Sheet URL</div>
+        <div style="font-size:0.78rem;color:var(--text-2);margin-bottom:10px;line-height:1.5;">Your Google Apps Script Web App URL</div>
+
+        <textarea id="setup-url-input" rows="3"
+          placeholder="https://script.google.com/macros/s/AKfy.../exec"
+          style="width:100%;padding:12px 14px;border:2px solid #eee;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;outline:none;resize:none;line-height:1.5;"
+          onfocus="this.style.borderColor='var(--green)'"
+          onblur="this.style.borderColor='#eee'"></textarea>
+
+        <div style="background:var(--gold-l);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:0.75rem;color:#8a5a00;line-height:1.6;">
+          <strong>Your SMLI URL (tap to use):</strong><br>
+          <button onclick="document.getElementById('setup-url-input').value='https://script.google.com/macros/s/AKfycbxy5YzAf6ZltDCO-v8-eHjNE-ZbcuOFtC7h-qqHTXIdsbaQIkmuLscPpfZtzint51ywaA/exec';" style="background:#F5A623;border:none;border-radius:6px;padding:5px 10px;font-size:0.72rem;font-weight:700;color:white;cursor:pointer;margin-top:4px;">
+            ✅ Use St James 6A URL
+          </button>
+        </div>
+
+        <div style="font-family:'Fraunces',serif;font-size:1rem;font-weight:800;margin-bottom:4px;margin-top:1rem;">Step 2 — Download updated file</div>
+        <div style="font-size:0.78rem;color:var(--text-2);margin-bottom:10px;line-height:1.5;">Downloads a new version with your URL permanently saved inside.</div>
+
+        <button onclick="downloadUpdatedFile()"
+          style="width:100%;padding:14px;background:var(--green);color:white;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;margin-bottom:10px;">
+          ⬇️ Download smli-platform.html
+        </button>
+
+        <div style="font-family:'Fraunces',serif;font-size:1rem;font-weight:800;margin-bottom:4px;">Step 3 — Share with students</div>
+        <div style="font-size:0.78rem;color:var(--text-2);line-height:1.6;">
+          Send the file via WhatsApp, Email, Google Drive or USB.<br>
+          <strong>Students open it → enter class code → done!</strong><br>
+          Works on laptop, desktop, phone — any device.
+        </div>
+
+        <div style="border-top:1px solid #f0f0f0;margin-top:1.25rem;padding-top:1rem;">
+          <div style="font-size:0.75rem;color:var(--text-3);margin-bottom:8px;">Or just save for this device only (no download):</div>
+          <button onclick="saveURLThisSession()"
+            style="width:100%;padding:10px;background:#f5f5f5;color:var(--text-2);border:none;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;">
+            Save for this device only
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// PAGE NAVIGATION
+// ═══════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  // Hide waiting overlay when navigating to top-level pages
+  if (id === 'page-home' || id === 'page-teacher-login' || id === 'page-student-join' || id === 'page-setup') {
+    document.getElementById('waiting-overlay').classList.remove('show');
+    document.getElementById('demo-toggle-bar').style.display = 'none';
+  }
+  // Init setup page when opened
+  if (id === 'page-setup') initSetupPage();
+}
+
+// ═══════════════════════════════════════════════
+// TEACHER AUTH
+// ═══════════════════════════════════════════════
+let teacherData = { name:'', email:'', classes:[] };
+
+function teacherGoogleLogin() {
+  const email = document.getElementById('teacher-email').value.trim() || 'smartmoneylearninginstitute@gmail.com';
+  const name = email.split('@')[0].replace(/[^a-zA-Z]/g,' ').trim() || 'Teacher';
+  loginAsTeacher(name, email);
+}
+
+function teacherEmailLogin() {
+  const email = document.getElementById('teacher-email').value.trim();
+  const pass  = document.getElementById('teacher-password').value.trim();
+  // Simple login — just needs email (or any input)
+  const loginEmail = email || 'teacher@smli.com';
+  const name = loginEmail.split('@')[0].replace(/[^a-zA-Z]/g,' ').trim() || 'Teacher';
+  loginAsTeacher(name, loginEmail);
+}
+
+function loginAsTeacher(name, email) {
+  teacherData.name  = name;
+  teacherData.email = email;
+  const initials = name.split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2) || 'T';
+  const avatarEl = document.getElementById('t-avatar-initials');
+  const nameEl   = document.getElementById('t-user-name');
+  const titleEl  = document.getElementById('t-welcome-title');
+  if (avatarEl) avatarEl.textContent = initials;
+  if (nameEl)   nameEl.textContent   = name;
+  const hour     = new Date().getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  if (titleEl)  titleEl.textContent  = greeting + ', ' + name.split(' ')[0] + '! 👋';
+  updateTeacherStats();
+  renderClassesList();
+  // Hide waiting overlay before showing dashboard
+  document.getElementById('waiting-overlay').classList.remove('show');
+  showPage('page-teacher-dashboard');
+  const vc = document.getElementById('view-classes');
+  const vr = document.getElementById('view-classroom');
+  if (vc) vc.style.display = 'block';
+  if (vr) vr.style.display = 'none';
+  showToast('Welcome, ' + name.split(' ')[0] + '! 👋');
+}
+
+// ═══════════════════════════════════════════════
+// CLASS MANAGEMENT
+// ═══════════════════════════════════════════════
+function generateJoinCode() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  return Array.from({length:6}, () => chars[Math.floor(Math.random()*chars.length)]).join('');
+}
+
+function openCreateClass() {
+  document.getElementById('create-class-modal').classList.add('open');
+}
+function closeCreateClass() {
+  document.getElementById('create-class-modal').classList.remove('open');
+}
+
+function createClass() {
+  const name = document.getElementById('new-class-name').value.trim();
+  const grade = document.getElementById('new-class-grade').value;
+  const year = document.getElementById('new-class-year').value.trim();
+  const expectedStudents = parseInt(document.getElementById('new-class-students').value) || 30;
+  if (!name) { showToast('Please enter a class name'); return; }
+
+  const newClass = {
+    id: 'cls_' + Date.now(),
+    name, grade, year,
+    joinCode: generateJoinCode(),
+    expectedStudents,
+    students: [],
+    currentMonth: 1,
+    monthPhase: 'setup', // setup | released | done
+    scores: {},
+    eventId: 'none', eventPct: 0, eventName: '',
+    createdAt: new Date().toLocaleDateString('en-IN'),
+  };
+  teacherData.classes.push(newClass);
+  closeCreateClass();
+  updateTeacherStats();
+  renderClassesList();
+  showToast('Class "' + name + '" created! Code: ' + newClass.joinCode);
+}
+
+function updateTeacherStats() {
+  const total = teacherData.classes.length;
+  const totalStudents = teacherData.classes.reduce((s,c) => s + c.students.length, 0);
+  const months = teacherData.classes.map(c=>c.currentMonth);
+  const activeMonth = months.length > 0 ? Math.max(...months) : '—';
+  document.getElementById('t-total-classes').textContent = total;
+  document.getElementById('t-total-students').textContent = totalStudents;
+  document.getElementById('t-active-month').textContent = activeMonth;
+}
+
+function renderClassesList() {
+  const list = document.getElementById('classes-list');
+  if (teacherData.classes.length === 0) {
+    list.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-3);font-size:0.85rem;">No classes yet. Create your first class above.</div>';
+    return;
+  }
+  list.innerHTML = teacherData.classes.map(cls => `
+    <div class="class-card" onclick="openClassroom('${cls.id}')">
+      <div class="class-card-left">
+        <div class="class-icon">🏫</div>
+        <div>
+          <div class="class-name">${cls.name}</div>
+          <div class="class-meta">Grade ${cls.grade} · ${cls.students.length} students · Month ${cls.currentMonth} · Code: ${cls.joinCode}</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="class-status ${cls.students.length > 0 ? 'status-active' : 'status-new'}">${cls.students.length > 0 ? 'Active' : 'New'}</span>
+        <span class="class-arrow">›</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+let currentClassId = null;
+
+function openClassroom(classId) {
+  currentClassId = classId;
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (!cls) return;
+  document.getElementById('cr-title').textContent = cls.name;
+  document.getElementById('cr-meta').textContent = cls.students.length + ' students · Month ' + cls.currentMonth;
+  document.getElementById('cr-join-code').textContent = cls.joinCode;
+  document.getElementById('mc-month-badge').textContent = 'Month ' + cls.currentMonth;
+  document.getElementById('view-classes').style.display = 'none';
+  document.getElementById('view-classroom').style.display = 'block';
+  renderClassroomStudents(cls);
+  renderMonthControl(cls);
+}
+
+function backToClasses() {
+  document.getElementById('view-classes').style.display = 'block';
+  document.getElementById('view-classroom').style.display = 'none';
+  currentClassId = null;
+}
+
+function copyJoinCode() {
+  const cls = teacherData.classes.find(c => c.id === currentClassId);
+  if (!cls) return;
+  navigator.clipboard?.writeText(cls.joinCode).catch(()=>{});
+  showToast('Code ' + cls.joinCode + ' copied!');
+}
+
+function renderClassroomStudents(cls) {
+  const label = document.getElementById('cr-students-label');
+  const list = document.getElementById('cr-students-list');
+  label.textContent = 'Students (' + cls.students.length + ')';
+  if (cls.students.length === 0) {
+    list.innerHTML = '<div style="text-align:center;padding:1.5rem;color:var(--text-3);font-size:0.82rem;background:white;border-radius:12px;">Waiting for students to join with code <strong>' + cls.joinCode + '</strong>...</div>';
+    return;
+  }
+  list.innerHTML = cls.students.map(s => {
+    const efPct = s.efTarget > 0 ? Math.min(100, Math.round((s.efSaved/s.efTarget)*100)) : 0;
+    return `
+      <div class="student-row">
+        <div class="s-avatar" style="background:${s.color}20;">${s.emoji}</div>
+        <div style="flex:1;">
+          <div class="s-name">${s.name}</div>
+          <div class="s-prof">${s.profName}</div>
+        </div>
+        <div class="s-ef-wrap">
+          <div class="s-ef-bar"><div class="s-ef-fill" style="width:${efPct}%"></div></div>
+          <span class="s-ef-pct">EF ${efPct}%</span>
+        </div>
+        <div class="s-score" style="color:var(--lml-green-d);">${cls.scores[s.id] || '—'}</div>
+      </div>`;
+  }).join('');
+}
+
+// ── Month Control Panel (Teacher inside classroom) ──
+const T_ACTIVITY_TOPICS = [
+  'What is income and how is it earned?',
+  'Understanding needs vs wants and expenses',
+  'Why every rupee saved matters',
+  'What happens when unexpected costs hit?',
+  'How does tax affect your take-home pay?',
+  'Reviewing your financial health score',
+];
+const T_LIFE_EVENTS = [
+  {id:'none',  icon:'✅', name:'No event this month',        pct:0,    lvl:''},
+  {id:'phone', icon:'📱', name:'Phone screen cracked',       pct:0.08, lvl:'Level 1'},
+  {id:'medic', icon:'🏥', name:'Family member hospitalised', pct:0.30, lvl:'Level 2'},
+  {id:'vehic', icon:'🔧', name:'Vehicle breakdown',          pct:0.15, lvl:'Level 1'},
+  {id:'rain',  icon:'🌧️', name:'Storm damaged property',    pct:0.20, lvl:'Level 2'},
+];
+
+function renderMonthControl(cls) {
+  const mc = document.getElementById('mc-body');
+  document.getElementById('mc-month-badge').textContent = 'Month ' + cls.currentMonth;
+  const topicIdx = (cls.currentMonth - 1) % T_ACTIVITY_TOPICS.length;
+
+  if (cls.monthPhase === 'released') {
+    mc.innerHTML = `
+      <div class="waiting-card">
+        <div class="wc-icon">⏳</div>
+        <div class="wc-title">Month ${cls.currentMonth} Released</div>
+        <div class="wc-sub">Waiting for ${cls.students.length} student${cls.students.length!==1?'s':''} to confirm decisions...</div>
+      </div>`;
+    return;
+  }
+
+  if (cls.monthPhase === 'done') {
+    mc.innerHTML = `
+      <div class="waiting-card" style="background:linear-gradient(135deg,var(--lml-green-l),#f0fff8);">
+        <div class="wc-icon">🎉</div>
+        <div class="wc-title">Month ${cls.currentMonth} Complete!</div>
+        <div class="wc-sub">All students confirmed. Ready for Month ${cls.currentMonth+1}.</div>
+        <button class="next-month-btn" onclick="advanceMonth('${cls.id}')">
+          🎓 Start Month ${cls.currentMonth+1} — Enter Scores
+        </button>
+      </div>`;
+    return;
+  }
+
+  // Setup phase
+  const scoreRowsHtml = cls.students.length === 0
+    ? '<div style="font-size:0.8rem;color:var(--text-3);text-align:center;padding:1rem;">No students yet. Share the join code above.</div>'
+    : cls.students.map(s => `
+        <div class="score-entry-row">
+          <div class="se-emoji">${s.emoji}</div>
+          <div style="flex:1;"><div class="se-name">${s.name}</div><div style="font-size:0.68rem;color:var(--text-3);">${s.profName}</div></div>
+          <div class="se-stepper">
+            <button class="se-btn" onclick="changeStudentScore('${cls.id}','${s.id}',-1)">−</button>
+            <div class="se-val" id="score-${cls.id}-${s.id}">${cls.scores[s.id]||7}</div>
+            <button class="se-btn" onclick="changeStudentScore('${cls.id}','${s.id}',1)">+</button>
+          </div>
+        </div>`).join('');
+
+  const eventHtml = T_LIFE_EVENTS.map(e => `
+    <div class="es-opt ${cls.eventId===e.id?(e.id==='none'?'active-none':'active'):''}"
+         onclick="setClassEvent('${cls.id}','${e.id}',${e.pct},'${e.name}')">
+      <div class="es-icon">${e.icon}</div>
+      <div class="es-name">${e.name}</div>
+      <div>${e.lvl?`<span class="event-level ${e.lvl==='Level 2'?'lvl-2':'lvl-1'}">${e.lvl}</span> `:''}<span class="es-cost">${e.pct>0?Math.round(e.pct*100)+'% of income':'Normal month'}</span></div>
+    </div>`).join('');
+
+  mc.innerHTML = `
+    <div style="background:#FFF4E8;border-radius:10px;padding:10px 12px;margin-bottom:1rem;">
+      <div style="font-size:0.7rem;font-weight:700;color:#cc6a00;margin-bottom:3px;text-transform:uppercase;">Month ${cls.currentMonth} Topic</div>
+      <div style="font-size:0.85rem;font-weight:600;">${T_ACTIVITY_TOPICS[topicIdx]}</div>
+    </div>
+
+    <div style="font-size:0.72rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Activity Scores</div>
+    <div style="display:flex;flex-direction:column;gap:0;">${scoreRowsHtml}</div>
+
+    <div style="font-size:0.72rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.04em;margin:1rem 0 8px;">Life Event (optional)</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">${eventHtml}</div>
+
+    <button class="process-btn-big" onclick="processClassMonth('${cls.id}')">
+      ▶ Process Month ${cls.currentMonth} → Release to Students
+    </button>`;
+}
+
+function changeStudentScore(classId, studentId, delta) {
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (!cls) return;
+  if (!cls.scores[studentId]) cls.scores[studentId] = 7;
+  cls.scores[studentId] = Math.max(1, Math.min(10, cls.scores[studentId] + delta));
+  const el = document.getElementById('score-' + classId + '-' + studentId);
+  if (el) el.textContent = cls.scores[studentId];
+}
+
+function setClassEvent(classId, id, pct, name) {
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (!cls) return;
+  cls.eventId = id; cls.eventPct = pct; cls.eventName = name;
+  renderMonthControl(cls);
+}
+
+function processClassMonth(classId) {
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (!cls) return;
+  cls.monthPhase = 'released';
+  renderMonthControl(cls);
+  renderClassroomStudents(cls);
+  showToast('Month ' + cls.currentMonth + ' released to ' + cls.students.length + ' students!');
+}
+
+function advanceMonth(classId) {
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (!cls) return;
+  cls.currentMonth++;
+  cls.monthPhase = 'setup';
+  cls.eventId = 'none'; cls.eventPct = 0; cls.eventName = '';
+  cls.scores = {};
+  renderMonthControl(cls);
+  document.getElementById('mc-month-badge').textContent = 'Month ' + cls.currentMonth;
+  document.getElementById('cr-meta').textContent = cls.students.length + ' students · Month ' + cls.currentMonth;
+  showToast('Month ' + cls.currentMonth + ' ready — enter scores!');
+}
+
+// ═══════════════════════════════════════════════════════
+// GOOGLE SHEETS CONNECTION
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// EMBEDDED SHEET URL — Teacher fills this in once
+// Then shares the file with all students
+// Students on ANY device can find the class automatically
+// ═══════════════════════════════════════════════════════
+const EMBEDDED_SHEET_URL = '%%SHEET_URL%%'; // DO NOT EDIT THIS LINE MANUALLY
+
+// Load sheet URL — priority: embedded > localStorage
+let sheetURL = (EMBEDDED_SHEET_URL && EMBEDDED_SHEET_URL !== '%%SHEET_URL%%')
+  ? EMBEDDED_SHEET_URL
+  : (localStorage.getItem('smli_sheet_url') || '');
+let sheetData = { students:[], scores:{}, events:[], settings:{} };
+let isSyncing = false;
+
+// Mobile-compatible fetch — works on ALL devices including iPhone
+function sheetFetch(url) {
+  return new Promise((resolve, reject) => {
+    // Method 1: Standard fetch with redirect following (works on most devices)
+    fetch(url, {
+      method: 'GET',
+      redirect: 'follow',
+    })
+    .then(r => {
+      if (!r.ok && r.type !== 'opaqueredirect') throw new Error('Response not ok: ' + r.status);
+      return r.json();
+    })
+    .then(data => resolve(data))
+    .catch(() => {
+      // Method 2: Script tag injection (works on iOS Safari and mobile browsers)
+      const cbName = '_smli' + Date.now();
+      const script  = document.createElement('script');
+      const timer   = setTimeout(() => {
+        script.remove();
+        delete window[cbName];
+        reject(new Error('Timeout'));
+      }, 10000);
+
+      window[cbName] = function(data) {
+        clearTimeout(timer);
+        script.remove();
+        delete window[cbName];
+        resolve(data);
+      };
+
+      // Append callback param for JSONP
+      const sep = url.includes('?') ? '&' : '?';
+      script.src = url + sep + 'callback=' + cbName;
+      script.onerror = () => {
+        clearTimeout(timer);
+        script.remove();
+        delete window[cbName];
+        reject(new Error('Script load failed'));
+      };
+      document.head.appendChild(script);
+    });
+  });
+}
+
+async function syncFromSheet(classId) {
+  if (!sheetURL) { showToast('No sheet connected. Connect Google Sheet first.'); return false; }
+  isSyncing = true;
+  showToast('Syncing from Google Sheet...');
+  try {
+    const url  = sheetURL + '?action=getAll&t=' + Date.now();
+    const data = await sheetFetch(url);
+    if (data.error) { showToast('Sheet error: ' + data.error); isSyncing=false; return false; }
+    sheetData = data;
+
+    // Update class with students from sheet
+    const cls = teacherData.classes.find(c => c.id === classId);
+    if (cls && data.students) {
+      // Merge sheet students into class roster
+      data.students.forEach(sheetStu => {
+        const existing = cls.students.find(s => s.name === sheetStu.name);
+        if (!existing) {
+          const idx = cls.students.length % STUDENT_COLORS.length;
+          cls.students.push({
+            id:       sheetStu.id || 'stu_' + cls.students.length,
+            name:     sheetStu.name,
+            pin:      sheetStu.pin,
+            rollNo:   sheetStu.rollNo || '',
+            color:    STUDENT_COLORS[idx],
+            emoji:    STUDENT_EMOJIS[idx],
+            classId:  cls.id,
+            profName: sheetStu.profession || '',
+            lifeGoal: sheetStu.lifeGoal  || '',
+            joined:   sheetStu.joined    || false,
+            efSaved:  0, stSaved:0, ltSaved:0, efTarget:0,
+          });
+        }
+      });
+
+      // Load scores into class
+      if (data.scores) {
+        cls.students.forEach(stu => {
+          const stuScores = data.scores[stu.name] || {};
+          const monthKey  = 'Month ' + cls.currentMonth;
+          if (stuScores[monthKey]) cls.scores[stu.id] = stuScores[monthKey];
+        });
+      }
+
+      // Load life event for current month
+      if (data.events) {
+        const monthKey = 'Month ' + cls.currentMonth;
+        const event    = data.events.find(e => e.month === monthKey);
+        if (event) { cls.eventId=event.name; cls.eventPct=event.pct; cls.eventName=event.name; }
+      }
+    }
+
+    isSyncing = false;
+    showToast('✅ Synced! ' + (data.students?.length||0) + ' students loaded.');
+    return true;
+  } catch(err) {
+    showToast('Sync failed. Check sheet URL.');
+    isSyncing = false;
+    return false;
+  }
+}
+
+async function saveToSheet(classId) {
+  if (!sheetURL) return;
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (!cls) return;
+  try {
+    const payload = {
+      action: 'saveFinancialData',
+      students: cls.students.map(s => ({
+        name:         s.name,
+        efSaved:      s.efSaved  || 0,
+        stSaved:      s.stSaved  || 0,
+        ltSaved:      s.ltSaved  || 0,
+        efTarget:     s.efTarget || 0,
+        currentMonth: cls.currentMonth,
+        profession:   s.profName || '',
+        lifeGoal:     s.lifeGoal || '',
+        joined:       s.joined   || false,
+      }))
+    };
+    await fetch(sheetURL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  } catch(err) {
+    console.log('Sheet save failed:', err);
+  }
+}
+
+// ── Sheet Connect Modal ──
+function openSheetConnect(classId) {
+  const existing = localStorage.getItem('smli_sheet_url_' + classId) || '';
+  const modal = document.createElement('div');
+  modal.id = 'sheet-connect-modal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(13,27,42,0.7);z-index:999;display:flex;align-items:flex-end;justify-content:center;';
+  modal.innerHTML = `
+    <div style="background:white;border-radius:28px 28px 0 0;width:100%;max-width:500px;padding:2rem;">
+      <div style="width:40px;height:4px;background:#e0e0e0;border-radius:2px;margin:0 auto 1.5rem;"></div>
+      <div style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;margin-bottom:6px;">🔗 Connect Google Sheet</div>
+      <div style="font-size:0.82rem;color:var(--text-2);margin-bottom:1.5rem;line-height:1.6;">
+        Paste your Google Apps Script Web App URL below.<br>
+        Students and scores will load automatically from your sheet.
+      </div>
+      <div class="m-field">
+        <label>Apps Script Web App URL</label>
+        <input type="url" id="sheet-url-input" placeholder="https://script.google.com/macros/s/..." value="${existing}" style="font-size:0.82rem;" />
+      </div>
+      <div style="background:var(--green-l);border-radius:12px;padding:12px;margin-bottom:1rem;font-size:0.78rem;color:var(--green-d);line-height:1.8;">
+        <strong>How to get this URL:</strong><br>
+        1. Open your Google Sheet<br>
+        2. Extensions → Apps Script → paste the script<br>
+        3. Deploy → New Deployment → Web App<br>
+        4. Copy the URL and paste it here
+      </div>
+      <button class="m-btn" onclick="connectSheet('${classId}')">Connect & Sync →</button>
+      <button class="m-btn-cancel" onclick="document.getElementById('sheet-connect-modal').remove()">Cancel</button>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+async function connectSheet(classId) {
+  const url = document.getElementById('sheet-url-input').value.trim();
+  if (!url || !url.includes('script.google.com')) {
+    showToast('Please enter a valid Apps Script URL');
+    return;
+  }
+  sheetURL = url;
+  localStorage.setItem('smli_sheet_url', url);
+  localStorage.setItem('smli_sheet_url_' + classId, url);
+
+  // Save join code to settings so students can find class from any device
+  const cls = teacherData.classes.find(c => c.id === classId);
+  if (cls) {
+    try {
+      await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          action: 'saveSettings',
+          settings: {
+            joinCode:     cls.joinCode,
+            className:    cls.name,
+            grade:        cls.grade,
+            academicYear: cls.year,
+            currentMonth: String(cls.currentMonth),
+            monthPhase:   cls.monthPhase,
+          }
+        })
+      });
+    } catch(e) { console.log('Settings save:', e); }
+  }
+
+  document.getElementById('sheet-connect-modal')?.remove();
+  const ok = await syncFromSheet(classId);
+  if (ok) {
+    updateTeacherStats();
+    if (cls) { renderClassroomStudents(cls); renderMonthControl(cls); }
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// STUDENT JOIN — 3-step flow
+// ═══════════════════════════════════════════════════════
+const STUDENT_COLORS = ['#E53935','#1E88E5','#43A047','#FB8C00','#8E24AA','#00ACC1','#E91E63','#F57F17','#00897B','#5E35B1'];
+const STUDENT_EMOJIS = ['🦁','🐯','🦊','🐧','🐸','🦋','🐬','🦅','🐼','🦓'];
+
+let joinState = { classId:null, selectedStudent:null };
+
+async function enterCode() {
+  const code = document.getElementById('input-code').value.trim().toUpperCase();
+  if (code.length !== 6) { showToast('Please enter a 6-character class code'); return; }
+
+  // Step 1: Check local memory first (teacher on same device)
+  let cls = teacherData.classes.find(c => c.joinCode === code);
+
+  // Step 2: If not found locally, try loading from Google Sheet using stored URL
+  if (!cls) {
+    // Check localStorage for any saved sheet URL matching this code
+    const savedURL = localStorage.getItem('smli_sheet_url') || '';
+    if (savedURL) {
+      showToast('Finding your class...');
+      try {
+        const url  = savedURL + '?action=getAll&t=' + Date.now();
+        const data = await sheetFetch(url);
+        if (data && data.students && data.students.length > 0) {
+          // Build a virtual class from sheet data
+          const settings = data.settings || {};
+          const virtualClass = {
+            id:            'cls_sheet_' + code,
+            name:          settings.className   || 'My Class',
+            grade:         settings.grade        || '6',
+            year:          settings.academicYear || '2025-26',
+            joinCode:      code,
+            expectedStudents: data.students.length,
+            students:      [],
+            currentMonth:  parseInt(settings.currentMonth) || 1,
+            monthPhase:    settings.monthPhase || 'setup',
+            scores:        {},
+            eventId:'none', eventPct:0, eventName:'',
+          };
+          // Load students from sheet
+          data.students.forEach((s, i) => {
+            const idx = i % STUDENT_COLORS.length;
+            virtualClass.students.push({
+              id:       s.id || 'stu_' + i,
+              name:     s.name,
+              pin:      s.pin,
+              rollNo:   s.rollNo || '',
+              color:    STUDENT_COLORS[idx],
+              emoji:    STUDENT_EMOJIS[idx],
+              classId:  virtualClass.id,
+              profName: s.profession || '',
+              lifeGoal: s.lifeGoal  || '',
+              joined:   s.joined    || false,
+              efSaved:  0, stSaved:0, ltSaved:0, efTarget:0,
+            });
+          });
+          // Load scores
+          if (data.scores) {
+            virtualClass.students.forEach(stu => {
+              const stuScores = data.scores[stu.name] || {};
+              const monthKey  = 'Month ' + virtualClass.currentMonth;
+              if (stuScores[monthKey]) virtualClass.scores[stu.id] = stuScores[monthKey];
+            });
+          }
+          // Save sheet URL for this class
+          sheetURL = savedURL;
+          localStorage.setItem('smli_sheet_url_' + virtualClass.id, savedURL);
+          // Add to teacherData so it persists this session
+          teacherData.classes.push(virtualClass);
+          cls = virtualClass;
+        }
+      } catch(err) {
+        console.log('Sheet lookup failed:', err);
+      }
+    }
+  }
+
+  // Step 3: Ask student to enter the sheet URL if still not found
+  if (!cls) {
+    // Show a URL entry prompt
+    showSheetURLPrompt(code);
+    return;
+  }
+
+  joinState.classId = cls.id;
+  document.getElementById('sj-class-name').textContent = cls.name + ' — Grade ' + cls.grade;
+  renderStudentNameList(cls);
+  document.getElementById('sj-step1').style.display = 'none';
+  document.getElementById('sj-step2').style.display = 'block';
+  document.getElementById('sj-search').value = '';
+}
+
+function showSheetURLPrompt(code) {
+  // Show a simple prompt asking for the sheet URL
+  const existing = document.getElementById('sj-url-prompt');
+  if (existing) existing.remove();
+
+  const prompt = document.createElement('div');
+  prompt.id = 'sj-url-prompt';
+  prompt.style.cssText = 'margin-top:1rem;background:white;border-radius:16px;padding:1.25rem;';
+  prompt.innerHTML = `
+    <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:6px;">
+      First time on this device?
+    </div>
+    <div style="font-size:0.75rem;color:var(--text-2);margin-bottom:10px;line-height:1.5;">
+      Ask your teacher for the Google Sheet URL to connect your class.
+    </div>
+    <input type="url" id="student-sheet-url" placeholder="Paste sheet URL from teacher..."
+      style="width:100%;padding:10px 12px;border:2px solid #eee;border-radius:10px;font-size:0.82rem;outline:none;margin-bottom:8px;" />
+    <button onclick="connectStudentSheet('${code}')"
+      style="width:100%;padding:10px;background:var(--green);color:white;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;">
+      Connect & Find Class →
+    </button>
+  `;
+  const step1 = document.getElementById('sj-step1');
+  const card = step1.querySelector('div[style*="background:white"]') || step1.lastElementChild;
+  card.appendChild(prompt);
+}
+
+async function connectStudentSheet(code) {
+  const url = document.getElementById('student-sheet-url')?.value.trim();
+  if (!url || !url.includes('script.google.com')) {
+    showToast('Please paste a valid sheet URL from your teacher');
+    return;
+  }
+  localStorage.setItem('smli_sheet_url', url);
+  sheetURL = url;
+  document.getElementById('sj-url-prompt')?.remove();
+  showToast('Connecting...');
+  // Re-trigger enterCode with saved URL
+  await enterCode();
+}
+
+function renderStudentNameList(cls) {
+  const list    = document.getElementById('sj-name-list');
+  const search  = document.getElementById('sj-search')?.value.toLowerCase() || '';
+  const students = cls.students.filter(s =>
+    !search || s.name.toLowerCase().includes(search)
+  );
+
+  if (students.length === 0) {
+    list.innerHTML = `<div style="padding:2rem;text-align:center;color:var(--text-3);font-size:0.85rem;">
+      ${cls.students.length === 0
+        ? 'No students loaded yet. Ask your teacher to sync the class list.'
+        : 'No student found matching "' + search + '"'}
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = students.map((s,i) => `
+    <div onclick="selectStudent('${s.id}')"
+         style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;cursor:pointer;transition:all 0.15s;margin-bottom:4px;border:2px solid transparent;"
+         onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background=''"
+         id="sj-row-${s.id}">
+      <div style="width:38px;height:38px;border-radius:10px;background:${s.color}20;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">${s.emoji || '👤'}</div>
+      <div style="flex:1;">
+        <div style="font-size:0.9rem;font-weight:700;">${s.name}</div>
+        ${s.rollNo ? `<div style="font-size:0.72rem;color:var(--text-3);">Roll No. ${s.rollNo}</div>` : ''}
+      </div>
+      ${s.joined ? `<div style="font-size:0.68rem;background:var(--green-l);color:var(--green-d);padding:3px 8px;border-radius:10px;font-weight:700;">Joined</div>` : ''}
+      <div style="color:var(--text-3);font-size:1rem;">›</div>
+    </div>`).join('');
+}
+
+function filterStudentList() {
+  const cls = teacherData.classes.find(c => c.id === joinState.classId);
+  if (cls) renderStudentNameList(cls);
+}
+
+function selectStudent(studentId) {
+  const cls = teacherData.classes.find(c => c.id === joinState.classId);
+  if (!cls) return;
+  const student = cls.students.find(s => s.id === studentId);
+  if (!student) return;
+
+  joinState.selectedStudent = student;
+  document.getElementById('sj-selected-emoji').textContent = student.emoji || '👤';
+  document.getElementById('sj-selected-name').textContent  = student.name;
+  document.getElementById('sj-selected-class').textContent = cls.name + ' · Grade ' + cls.grade;
+  document.getElementById('pin-error').style.display = 'none';
+  document.getElementById('input-pin').value = '';
+
+  document.getElementById('sj-step2').style.display = 'none';
+  document.getElementById('sj-step3').style.display = 'block';
+  setTimeout(() => document.getElementById('input-pin').focus(), 300);
+}
+
+function backToStep1() {
+  document.getElementById('sj-step2').style.display = 'none';
+  document.getElementById('sj-step1').style.display = 'block';
+}
+function backToStep2() {
+  document.getElementById('sj-step3').style.display = 'none';
+  document.getElementById('sj-step2').style.display = 'block';
+}
+
+function verifyPin() {
+  const pin     = document.getElementById('input-pin').value.trim();
+  const student = joinState.selectedStudent;
+  const cls     = teacherData.classes.find(c => c.id === joinState.classId);
+
+  if (!pin)     { showToast('Please enter your PIN'); return; }
+  if (!student) { showToast('No student selected'); return; }
+
+  if (pin !== student.pin.toString()) {
+    document.getElementById('pin-error').style.display = 'block';
+    document.getElementById('input-pin').value = '';
+    document.getElementById('input-pin').focus();
+    return;
+  }
+
+  // PIN correct — mark as joined
+  student.joined = true;
+  document.getElementById('pin-error').style.display = 'none';
+
+  // Set up student state
+  state.name       = student.name;
+  state.studentId  = student.id;
+  state.classId    = cls.id;
+  state.isDemo     = false;
+  state.month      = cls.currentMonth;
+  state.activityScore = cls.scores[student.id] || 7;
+
+  // Restore financial progress if returning student
+  if (student.efSaved  > 0) state.efSaved  = student.efSaved;
+  if (student.stSaved  > 0) state.stSaved  = student.stSaved;
+  if (student.ltSaved  > 0) state.ltSaved  = student.ltSaved;
+  if (student.efTarget > 0) state.efTarget = student.efTarget;
+
+  document.getElementById('greeting-name').textContent = 'Hello, ' + student.name + '!';
+
+  // If student already chose profession — go straight to dashboard
+  if (student.profName && student.profName !== '') {
+    const prof = PROFESSIONS.find(p => p.name === student.profName);
+    if (prof) {
+      selectedProf = prof;
+      state.profession = prof;
+      buildDashboard();
+      showPage('page-dashboard');
+      showToast('Welcome back, ' + student.name.split(' ')[0] + '!');
+      return;
+    }
+  }
+
+  // First time — choose profession
+  buildProfGrid();
+  buildGoalGrid();
+  showPage('page-profession');
+  showToast('Welcome, ' + student.name.split(' ')[0] + '!');
+}
+
+// ═══════════════════════════════════════════════
+// LIFE MONEY LAB DATA
+// ═══════════════════════════════════════════════
+const PROFESSIONS = [
+  {id:'teacher', name:'Govt Teacher',        emoji:'👩‍🏫', income:28000, type:'salary', risk:1, color:'pc-green'},
+  {id:'nurse',   name:'Nurse',               emoji:'👩‍⚕️', income:22000, type:'salary', risk:1, color:'pc-blue'},
+  {id:'police',  name:'Police Constable',    emoji:'👮',  income:25000, type:'salary', risk:1, color:'pc-blue'},
+  {id:'sw',      name:'Software Engineer',   emoji:'👨‍💻', income:60000, type:'salary', risk:2, color:'pc-purple'},
+  {id:'doctor',  name:'Doctor',              emoji:'👨‍⚕️', income:80000, type:'salary', risk:1, color:'pc-green'},
+  {id:'shop',    name:'Small Shop Owner',    emoji:'🏪',  income:15000, type:'business',risk:2, color:'pc-orange'},
+  {id:'farmer',  name:'Farmer',              emoji:'🌾',  income:10000, type:'business',risk:4, color:'pc-yellow'},
+  {id:'vendor',  name:'Street Food Vendor',  emoji:'🍛',  income:8000,  type:'business',risk:4, color:'pc-coral'},
+  {id:'carp',    name:'Carpenter',           emoji:'🪚',  income:14000, type:'business',risk:2, color:'pc-orange'},
+  {id:'delivery',name:'Delivery Partner',    emoji:'🛵',  income:12000, type:'gig',     risk:3, color:'pc-blue'},
+  {id:'auto',    name:'Auto Rickshaw Driver',emoji:'🛺',  income:12000, type:'gig',     risk:3, color:'pc-yellow'},
+  {id:'yt',      name:'YouTuber / Creator',  emoji:'🎬',  income:15000, type:'business',risk:4, color:'pc-purple'},
+];
+const LIFE_GOALS = [
+  {id:'house',    emoji:'🏠', name:'Buy a House',          target:200000},
+  {id:'edu',      emoji:'🎓', name:"Children's Education", target:150000},
+  {id:'retire',   emoji:'🏖️', name:'Early Retirement',    target:300000},
+  {id:'business', emoji:'🚀', name:'Scale a Business',     target:0, special:true},
+  {id:'travel',   emoji:'🌍', name:'Travel the World',     target:80000},
+  {id:'wedding',  emoji:'💍', name:'Dream Wedding',        target:120000},
+];
+const MONTHLY_NEEDS = [
+  {name:"School/Children's Fees", icon:'📚', pct:0.08},
+  {name:'Medical Checkup',        icon:'🏥', pct:0.05},
+  {name:'Seasonal Clothing',      icon:'👕', pct:0.04},
+  {name:'Festival Expenses',      icon:'🎉', pct:0.10},
+  {name:'Vehicle Maintenance',    icon:'🔧', pct:0.06},
+  {name:'Home Repair',            icon:'🏠', pct:0.07},
+];
+const WANT_OPTIONS = [
+  [{name:'Order food delivery',emoji:'🍕',pct:0.03},{name:'New phone',emoji:'📱',pct:0.15},{name:'Video games',emoji:'🎮',pct:0.05}],
+  [{name:'Movie outing',emoji:'🎬',pct:0.03},{name:'New clothes',emoji:'👗',pct:0.06},{name:'Gym membership',emoji:'💪',pct:0.04}],
+  [{name:'Weekend trip',emoji:'✈️',pct:0.12},{name:'Restaurant dinner',emoji:'🍽️',pct:0.04},{name:'Online course',emoji:'💻',pct:0.03}],
+];
+const LESSONS = [
+  "Your first paycheck feels amazing — but notice how quickly expenses take their share. The gap between income and expenses is where your financial life is built.",
+  "Did you spend on wants? Every ₹ spent on a want is a ₹ not in your emergency fund. Small choices compound over time.",
+  "Festival month hits everyone equally. Higher income doesn't always mean easier — it often means higher expectations too.",
+  "Your emergency fund is growing. This is the most important financial habit you can build. Everything else comes after this.",
+  "Look at your long-term savings. Even 4% interest on idle money beats 0%. Time is your biggest financial asset.",
+  "Halfway to your emergency fund! Once you hit 3 months of expenses, a whole new world of financial tools opens up.",
+];
+
+// ── Student State ──
+let state = {
+  name:'Student', profession:null, goal:null,
+  month:1, activityScore:7,
+  efSaved:0, stSaved:0, ltSaved:0,
+  wantsChosen:[], totalSaved:0,
+  isDemo:false, pendingEvent:null,
+  zeroSaveWarned:false, totalBalance:0,
+  netIncome:0, grossIncome:0, tax:0,
+  fixedExp:0, efTarget:0, totalExpenses:0,
+  wantsCap:0, studentId:null, classId:null,
+};
+
+// ── Teacher Demo State ──
+let tState = {score:7, eventId:'none', eventPct:0, eventName:'', phase:'setup'};
+const ACTIVITY_TOPICS_LIST = T_ACTIVITY_TOPICS;
+const LIFE_EVENTS_LIST = T_LIFE_EVENTS;
+
+// ═══════════════════════════════════════════════
+// PROFESSION SELECTION
+// ═══════════════════════════════════════════════
+let currentFilter='all', selectedProf=null, selectedGoal=null;
+
+function buildProfGrid(filter='all') {
+  const grid = document.getElementById('prof-grid');
+  const profs = filter==='all' ? PROFESSIONS : PROFESSIONS.filter(p=>p.type===filter);
+  grid.innerHTML = profs.map(p=>`
+    <div class="prof-card ${p.color} ${selectedProf?.id===p.id?'selected':''}" onclick="selectProf('${p.id}')">
+      <span class="prof-emoji">${p.emoji}</span>
+      <div class="prof-name">${p.name}</div>
+      <div class="prof-income">₹${p.income.toLocaleString('en-IN')}/month</div>
+      <span class="prof-type-badge badge-${p.type}">${p.type==='salary'?'Salaried':p.type==='business'?'Business':'Gig'}</span>
+      <div class="risk-dots">${[1,2,3,4].map(i=>`<div class="risk-dot${i<=p.risk?' active':''}"></div>`).join('')}</div>
+    </div>`).join('');
+}
+function filterProf(type,btn) {
+  currentFilter=type;
+  document.querySelectorAll('.filter-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  buildProfGrid(type);
+}
+function selectProf(id) {
+  selectedProf=PROFESSIONS.find(p=>p.id===id);
+  buildProfGrid(currentFilter);
+  updateContinueBtn();
+}
+function buildGoalGrid() {
+  const grid=document.getElementById('goal-grid');
+  grid.innerHTML=LIFE_GOALS.map(g=>`
+    <div class="goal-card ${selectedGoal?.id===g.id?'selected':''}" onclick="selectGoal('${g.id}')">
+      <span class="goal-emoji">${g.emoji}</span>
+      <div class="goal-name">${g.name}</div>
+      <div class="goal-target">${g.special?'Reach Scaling state':'₹'+g.target.toLocaleString('en-IN')}</div>
+    </div>`).join('');
+}
+function selectGoal(id) {
+  selectedGoal=LIFE_GOALS.find(g=>g.id===id);
+  buildGoalGrid();
+  updateContinueBtn();
+}
+function updateContinueBtn() {
+  const btn=document.getElementById('continue-btn');
+  if(selectedProf&&selectedGoal){btn.disabled=false;btn.textContent=`Continue as ${selectedProf.emoji} ${selectedProf.name} →`;}
+  else if(selectedProf){btn.disabled=false;btn.textContent='Now set your Life Goal →';}
+  else{btn.disabled=true;btn.textContent='Choose a profession to continue';}
+}
+function goToDashboard() {
+  if(!selectedProf){showToast('Please choose a profession!');return;}
+  if(!selectedGoal){showToast('Please set a life goal!');return;}
+  state.profession=selectedProf;
+  state.goal=selectedGoal;
+  state.zeroSaveWarned=false;
+
+  // Update student record in class if joined via code
+  if(state.classId) {
+    const cls=teacherData.classes.find(c=>c.id===state.classId);
+    if(cls){
+      const stu=cls.students.find(s=>s.id===state.studentId);
+      if(stu){stu.profName=selectedProf.name;stu.emoji=selectedProf.emoji;}
+      state.activityScore=cls.scores[state.studentId]||7;
+    }
+  }
+
+  if(state.isDemo) {
+    document.getElementById('demo-toggle-bar').style.display='flex';
+    document.getElementById('page-dashboard').style.paddingTop='44px';
+    document.getElementById('waiting-overlay').classList.add('show');
+    renderTeacherPanel();
+  } else {
+    buildDashboard();
+  }
+  showPage('page-dashboard');
+}
+
+// ═══════════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════════
+function buildDashboard() {
+  const p=state.profession;
+  document.getElementById('nav-avatar').textContent=p.emoji;
+  document.getElementById('nav-name').textContent=state.name;
+  document.getElementById('nav-prof').textContent=p.name+' · '+(p.type==='salary'?'Salaried':p.type==='business'?'Business':'Gig');
+  document.getElementById('month-badge').textContent='Month '+state.month;
+
+  const score=state.activityScore, scorePct=score/10;
+  const grossIncome=Math.round(p.income*scorePct);
+  const tax=(p.type==='salary'&&p.income>=25000)?Math.round(grossIncome*0.10):0;
+  const netIncome=grossIncome-tax;
+  state.netIncome=netIncome; state.grossIncome=grossIncome; state.tax=tax;
+
+  const prevSavings=state.efSaved+state.stSaved+state.ltSaved;
+  const totalBalance=prevSavings+netIncome;
+  state.totalBalance=totalBalance;
+
+  document.getElementById('hero-income').innerHTML=`<span>₹</span>${totalBalance.toLocaleString('en-IN')}`;
+  document.getElementById('hero-sub').textContent=`Previous savings ₹${prevSavings.toLocaleString('en-IN')} + Month ${state.month} income ₹${netIncome.toLocaleString('en-IN')}`;
+  document.getElementById('hb-gross').textContent='₹'+prevSavings.toLocaleString('en-IN');
+  document.getElementById('hb-net').textContent='₹'+netIncome.toLocaleString('en-IN');
+  document.getElementById('hb-tax').textContent='-₹'+tax.toLocaleString('en-IN');
+
+  const fixedExp=Math.round(p.income*0.50);
+  state.fixedExp=fixedExp;
+  state.efTarget=fixedExp*3;
+  updateEFProgress();
+  buildExpenses();
+  buildWants();
+  updateBuckets();
+
+  // Reset bucket inputs
+  ['bucket-ef','bucket-st','bucket-lt'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=0;});
+  updateBuckets();
+}
+
+function updateEFProgress() {
+  const pct=Math.min(100,Math.round((state.efSaved/state.efTarget)*100));
+  document.getElementById('ef-pct').textContent=pct+'%';
+  document.getElementById('ef-bar').style.width=pct+'%';
+  document.getElementById('ef-saved').textContent='₹'+state.efSaved.toLocaleString('en-IN');
+  document.getElementById('ef-target').textContent='₹'+state.efTarget.toLocaleString('en-IN');
+  document.getElementById('ef-hint').textContent=pct>=100?'🎉 Emergency Fund complete! Investments unlocked!':`Save ₹${(state.efTarget-state.efSaved).toLocaleString('en-IN')} more to unlock Investments (Stage 2)`;
+}
+
+function buildExpenses() {
+  const p=state.profession;
+  const fixed=state.fixedExp;
+  const monthIdx=(state.month-1)%MONTHLY_NEEDS.length;
+  const need=MONTHLY_NEEDS[monthIdx];
+  const needAmt=Math.round(p.income*need.pct);
+  state.needAmt=needAmt;
+  let total=fixed+needAmt;
+  let eventHtml='';
+  if(state.pendingEvent&&state.pendingEvent.pct>0){
+    const evAmt=Math.round(state.netIncome*state.pendingEvent.pct);
+    total+=evAmt;
+    eventHtml=`<div class="expense-row" style="background:#FFF0F0;border-radius:10px;margin-top:6px;padding:10px 12px;"><div class="exp-left"><div class="exp-icon" style="background:#FFD6D6;">⚠️</div><div><div class="exp-name" style="color:var(--coral);">${state.pendingEvent.name}</div><div class="exp-type"><span class="exp-tag" style="background:#FFD6D6;color:#b83333;">Life Event</span></div></div></div><div class="exp-amt" style="color:var(--coral);">-₹${evAmt.toLocaleString('en-IN')}</div></div>`;
+  }
+  state.totalExpenses=total;
+  document.getElementById('total-exp-badge').textContent='₹'+total.toLocaleString('en-IN')+' total';
+  const fixed4=[
+    {name:'Rent / Housing',icon:'🏠',amt:Math.round(p.income*0.25)},
+    {name:'Food & Groceries',icon:'🍱',amt:Math.round(p.income*0.12)},
+    {name:'Transport',icon:'🚌',amt:Math.round(p.income*0.08)},
+    {name:'Utilities',icon:'💡',amt:Math.round(p.income*0.05)},
+  ];
+  const html=fixed4.map(e=>`<div class="expense-row"><div class="exp-left"><div class="exp-icon" style="background:#FFF0F0;">${e.icon}</div><div><div class="exp-name">${e.name}</div><div class="exp-type"><span class="exp-tag tag-fixed">Fixed</span></div></div></div><div class="exp-amt">-₹${e.amt.toLocaleString('en-IN')}</div></div>`).join('')
+    +`<div class="expense-row"><div class="exp-left"><div class="exp-icon" style="background:#FFF4E8;">${need.icon}</div><div><div class="exp-name">${need.name}</div><div class="exp-type"><span class="exp-tag tag-need">Monthly Need</span></div></div></div><div class="exp-amt">-₹${needAmt.toLocaleString('en-IN')}</div></div>`;
+  document.getElementById('expenses-body').innerHTML=html+eventHtml;
+}
+
+function buildWants() {
+  const p=state.profession;
+  state.wantsCap=Math.round(state.netIncome*0.20);
+  state.wantsChosen=[];
+  const monthIdx=(state.month-1)%WANT_OPTIONS.length;
+  const wants=WANT_OPTIONS[monthIdx];
+  document.getElementById('wants-options').innerHTML=wants.map((w,i)=>{
+    const price=Math.round(p.income*w.pct);
+    return `<div class="want-item" id="want-${i}" onclick="toggleWant(${i},${price})"><div class="want-left"><span class="want-emoji">${w.emoji}</span><div><div class="want-name">${w.name}</div><div class="want-pct">${Math.round(w.pct*100)}% of your income</div></div></div><div class="want-price">₹${price.toLocaleString('en-IN')}</div></div>`;
+  }).join('');
+  updateWantsDisplay();
+}
+
+function toggleWant(idx,price) {
+  const el=document.getElementById('want-'+idx);
+  const already=state.wantsChosen.some(w=>w.idx===idx);
+  const spent=state.wantsChosen.reduce((s,w)=>s+w.price,0);
+  if(already){state.wantsChosen=state.wantsChosen.filter(w=>w.idx!==idx);el.classList.remove('chosen');}
+  else{if(spent+price>state.wantsCap){showToast(`Wants cap is ₹${state.wantsCap.toLocaleString('en-IN')} (20% of income)!`);return;}state.wantsChosen.push({idx,price});el.classList.add('chosen');}
+  updateWantsDisplay();updateBuckets();
+}
+function updateWantsDisplay() {
+  const spent=state.wantsChosen.reduce((s,w)=>s+w.price,0);
+  const pct=Math.min(100,Math.round((spent/state.wantsCap)*100));
+  document.getElementById('wants-cap-fill').style.width=pct+'%';
+  document.getElementById('wants-used-label').textContent=`₹${spent.toLocaleString('en-IN')} / ₹${state.wantsCap.toLocaleString('en-IN')}`;
+}
+
+function updateBuckets() {
+  const totalBalance=state.totalBalance||0;
+  const totalExp=state.totalExpenses||0;
+  const wantsSpent=state.wantsChosen?state.wantsChosen.reduce((s,w)=>s+w.price,0):0;
+  const avail=Math.max(0,totalBalance-totalExp-wantsSpent);
+  document.getElementById('avail-save').textContent='₹'+avail.toLocaleString('en-IN');
+  const ef=parseInt(document.getElementById('bucket-ef').value)||0;
+  const st=parseInt(document.getElementById('bucket-st').value)||0;
+  const lt=parseInt(document.getElementById('bucket-lt').value)||0;
+  const total=ef+st+lt;
+  document.getElementById('unallocated-amt').textContent='₹'+Math.max(0,avail-total).toLocaleString('en-IN');
+  const rem=avail-total;
+  const badge=document.getElementById('remaining-badge');
+  if(rem<0){badge.textContent='⚠️ Over by ₹'+Math.abs(rem).toLocaleString('en-IN');badge.style.background='#FFE8E8';badge.style.color='#b83333';}
+  else{badge.textContent='₹'+rem.toLocaleString('en-IN')+' unallocated';badge.style.background='#f5f5f5';badge.style.color='var(--text-3)';}
+  const runEF=state.efSaved+ef,runST=state.stSaved+st,runLT=state.ltSaved+lt;
+  const t1=document.getElementById('total-ef-display'),t2=document.getElementById('total-st-display'),t3=document.getElementById('total-lt-display'),t4=document.getElementById('total-networth-display');
+  if(t1)t1.textContent='₹'+runEF.toLocaleString('en-IN');
+  if(t2)t2.textContent='₹'+runST.toLocaleString('en-IN');
+  if(t3)t3.textContent='₹'+runLT.toLocaleString('en-IN');
+  if(t4)t4.textContent='₹'+(runEF+runST+runLT).toLocaleString('en-IN');
+  const fh=calculateFHScore(ef,avail),hp=calculateHPScore(wantsSpent);
+  document.getElementById('fh-score').textContent=fh;document.getElementById('fh-bar').style.width=fh+'%';
+  document.getElementById('hp-score').textContent=hp;document.getElementById('hp-bar').style.width=hp+'%';
+}
+
+function calculateFHScore(ef,avail){let s=20;if(avail>0&&ef>0)s+=Math.round((ef/avail)*40);s=Math.min(60,s);if(state.efSaved>=state.efTarget)s=Math.min(80,s+20);return s;}
+function calculateHPScore(ws){return Math.min(100,Math.round(50+(state.wantsCap>0?ws/state.wantsCap:0)*30));}
+
+function quickAllocate(mode) {
+  const avail=Math.max(0,state.totalBalance-(state.totalExpenses||0)-(state.wantsChosen?state.wantsChosen.reduce((s,w)=>s+w.price,0):0));
+  if(avail<=0){showToast('Nothing available!');return;}
+  const ef=document.getElementById('bucket-ef'),st=document.getElementById('bucket-st'),lt=document.getElementById('bucket-lt');
+  if(mode==='ef'){ef.value=avail;st.value=0;lt.value=0;}
+  else{ef.value=Math.floor(avail*0.50);st.value=Math.floor(avail*0.30);lt.value=avail-Math.floor(avail*0.50)-Math.floor(avail*0.30);}
+  updateBuckets();showToast('Allocated! Adjust if needed.');
+}
+
+function confirmMonth() {
+  const ef=parseInt(document.getElementById('bucket-ef').value)||0;
+  const st=parseInt(document.getElementById('bucket-st').value)||0;
+  const lt=parseInt(document.getElementById('bucket-lt').value)||0;
+  const ws=state.wantsChosen.reduce((s,w)=>s+w.price,0);
+  const avail=Math.max(0,state.totalBalance-state.totalExpenses-ws);
+  if(ef+st+lt>avail){showToast('Cannot save more than available!');return;}
+  if(ef+st+lt===0&&avail>0){if(!state.zeroSaveWarned){state.zeroSaveWarned=true;showToast('⚠️ Saving ₹0! All ₹'+avail.toLocaleString('en-IN')+' goes to lifestyle. Confirm again to proceed.');return;}};
+  state.zeroSaveWarned=false;
+  state.efSaved+=ef;state.stSaved+=st;state.ltSaved+=lt;state.totalSaved+=ef+st+lt;
+
+  // Update student record in class
+  if(state.classId) {
+    const cls=teacherData.classes.find(c=>c.id===state.classId);
+    if(cls){
+      const stu=cls.students.find(s=>s.id===state.studentId);
+      if(stu){
+        stu.efSaved=state.efSaved;
+        stu.stSaved=state.stSaved;
+        stu.ltSaved=state.ltSaved;
+        stu.efTarget=state.efTarget;
+        stu.joined=true;
+      }
+      cls.monthPhase='done';
+      // Save to Google Sheet automatically
+      saveToSheet(cls.id);
+    }
+  }
+  updateEFProgress();
+  showSummaryModal(ef,st,lt,ws,state.totalBalance,state.totalExpenses,avail);
+}
+
+function showSummaryModal(ef,st,lt,wants,balance,exp,avail) {
+  document.getElementById('modal-title').textContent='Month '+state.month+' Complete! 🎉';
+  const prevSavings=(state.efSaved-ef)+(state.stSaved-st)+(state.ltSaved-lt);
+  const rows=[
+    {label:'Previous months savings',val:'₹'+prevSavings.toLocaleString('en-IN'),cls:'green'},
+    {label:'This month income (net)',val:'+₹'+state.netIncome.toLocaleString('en-IN'),cls:'green'},
+    {label:'Tax deducted',val:'-₹'+state.tax.toLocaleString('en-IN'),cls:'red'},
+    {label:'Total balance',val:'₹'+balance.toLocaleString('en-IN'),cls:'green'},
+    {label:'─',val:'',cls:''},
+    {label:'Expenses paid',val:'-₹'+exp.toLocaleString('en-IN'),cls:'red'},
+    {label:'Wants spent',val:'-₹'+wants.toLocaleString('en-IN'),cls:'red'},
+    {label:'Available to allocate',val:'₹'+avail.toLocaleString('en-IN'),cls:'green'},
+    {label:'─',val:'',cls:''},
+    {label:'→ Emergency Fund',val:'+₹'+ef.toLocaleString('en-IN'),cls:'green'},
+    {label:'→ Short Term',val:'+₹'+st.toLocaleString('en-IN'),cls:'green'},
+    {label:'→ Long Term',val:'+₹'+lt.toLocaleString('en-IN'),cls:'green'},
+    {label:'─',val:'',cls:''},
+    {label:'🟢 Emergency Fund total',val:'₹'+state.efSaved.toLocaleString('en-IN')+' / ₹'+state.efTarget.toLocaleString('en-IN'),cls:'green'},
+    {label:'💰 Total Net Worth',val:'₹'+(state.efSaved+state.stSaved+state.ltSaved).toLocaleString('en-IN'),cls:'green'},
+  ];
+  document.getElementById('modal-summary-rows').innerHTML=rows.map(r=>r.label==='─'?`<div style="border-top:1px solid #f0f0f0;margin:6px 0;"></div>`:`<div class="summary-row"><span class="sr-label">${r.label}</span><span class="sr-val ${r.cls}">${r.val}</span></div>`).join('');
+  document.getElementById('modal-lesson').textContent=LESSONS[(state.month-1)%LESSONS.length];
+  const btn=document.getElementById('modal-close-btn');
+  btn.textContent=state.isDemo?'✅ Done — Switch to Teacher to start Month '+(state.month+1):'✅ Done — Month '+(state.month+1)+' starts when teacher releases it';
+  document.getElementById('summary-modal').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('summary-modal').classList.remove('show');
+  if(state.isDemo){tState.phase='done';document.getElementById('waiting-overlay').classList.add('show');switchView('teacher');showToast('Month '+state.month+' done! Start Month '+(state.month+1)+' in Teacher view.');}
+  else{document.getElementById('waiting-overlay').classList.add('show');showToast('Waiting for teacher to start Month '+(state.month+1)+'...');}
+}
+
+// ═══════════════════════════════════════════════
+// DEMO TEACHER PANEL
+// ═══════════════════════════════════════════════
+function renderTeacherPanel() {
+  const p=state.profession;if(!p)return;
+  document.getElementById('tp-sub-text').textContent='Demo Class · Month '+state.month+' · 1 student';
+  const topicIdx=(state.month-1)%ACTIVITY_TOPICS_LIST.length;
+  const gross=Math.round(p.income*tState.score/10);
+  const efPct=state.efTarget>0?Math.min(100,Math.round((state.efSaved/state.efTarget)*100)):0;
+
+  if(tState.phase==='waiting'){
+    document.getElementById('tp-body').innerHTML=`<div class="step-card"><div class="step-head"><div class="step-num done">✓</div><div class="step-title">Month ${state.month} Released</div><div class="step-status" style="color:var(--lml-green-d);">Student deciding...</div></div><div class="step-body"><div style="text-align:center;padding:1.5rem 0 1rem;"><div style="font-size:2.5rem;margin-bottom:10px;">⏳</div><div style="font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;margin-bottom:6px;">Waiting for ${state.name}</div><div style="font-size:0.8rem;color:var(--text-2);">Switch to Student view to watch them decide.</div></div><div style="background:var(--lml-green-l);border-radius:12px;padding:12px;font-size:0.78rem;color:var(--lml-green-d);line-height:2;">✓ Score: ${tState.score}/10 · Income: ₹${gross.toLocaleString('en-IN')}<br>${tState.eventId!=='none'?'⚠️ Life event: '+tState.eventName:'✓ No life event this month'}</div></div></div>`;
+    return;
+  }
+  if(tState.phase==='done'){
+    document.getElementById('tp-body').innerHTML=`<div class="step-card"><div class="step-head"><div class="step-num done">✓</div><div class="step-title">Month ${state.month} Complete!</div><div class="step-status" style="color:var(--lml-green-d);">Student confirmed ✓</div></div><div class="step-body"><div style="text-align:center;padding:1.2rem 0 0.5rem;"><div style="font-size:2.5rem;margin-bottom:10px;">🎉</div><div style="font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;margin-bottom:4px;">${state.name} confirmed decisions!</div><div style="font-size:0.8rem;color:var(--text-2);margin-bottom:1rem;">Emergency Fund: ${efPct}% · Month ${state.month} done</div></div><button class="process-btn" style="background:var(--navy);" onclick="startNextMonth()">🎓 Start Month ${state.month+1} — Enter Score</button></div></div>`;
+    return;
+  }
+  const evHtml=LIFE_EVENTS_LIST.map(e=>`<div class="event-opt ${tState.eventId===e.id?'selected-event':''}" onclick="pickEvent('${e.id}',${e.pct},'${e.name}')"><div class="event-opt-icon">${e.icon}</div><div class="event-opt-name">${e.name}</div><div>${e.lvl?`<span class="event-level ${e.lvl==='Level 2'?'lvl-2':'lvl-1'}">${e.lvl}</span> `:''}<span class="event-opt-cost">${e.pct>0?Math.round(e.pct*100)+'% of income':'Normal month'}</span></div></div>`).join('');
+  document.getElementById('tp-body').innerHTML=`
+    <div class="step-card"><div class="step-head"><div class="step-num done">✓</div><div class="step-title">Class Overview</div><div class="step-status">Month ${state.month}</div></div><div class="step-body"><div class="co-row" style="margin-top:1rem;"><div class="co-emoji">${p.emoji}</div><div style="flex:1;"><div class="co-name">${state.name} · ${p.name}</div><div style="display:flex;align-items:center;gap:8px;margin-top:4px;"><div class="co-ef-bar"><div class="co-ef-fill" style="width:${efPct}%"></div></div><span style="font-size:0.7rem;color:var(--text-3);">EF ${efPct}%</span></div></div></div></div></div>
+    <div class="step-card"><div class="step-head"><div class="step-num" style="background:var(--orange);color:white;">2</div><div class="step-title">Activity Score</div><div class="step-status">Month ${state.month}</div></div><div class="step-body"><div style="background:#FFF4E8;border-radius:10px;padding:10px 12px;margin-top:1rem;"><div style="font-size:0.7rem;font-weight:700;color:#cc6a00;margin-bottom:3px;text-transform:uppercase;">Topic</div><div style="font-size:0.85rem;font-weight:600;">${ACTIVITY_TOPICS_LIST[topicIdx]}</div></div><div class="score-student-row" style="margin-top:12px;"><div class="ssr-left"><div class="ssr-emoji">${p.emoji}</div><div><div class="ssr-name">${state.name}</div><div class="ssr-prof">${p.name} · ₹${p.income.toLocaleString('en-IN')}/mo</div></div></div><div class="score-stepper"><button class="ss-btn" onclick="adjustScore(-1)">−</button><div class="ss-val" id="tp-score-val">${tState.score}</div><button class="ss-btn" onclick="adjustScore(1)">+</button></div></div><div style="background:#f5f5f5;border-radius:10px;padding:10px;text-align:center;font-size:0.82rem;color:var(--text-2);margin-top:8px;">Score <strong id="tp-score-preview">${tState.score}</strong>/10 → Earns <strong style="color:var(--lml-green-d);" id="tp-income-preview">₹${gross.toLocaleString('en-IN')}</strong></div></div></div>
+    <div class="step-card"><div class="step-head"><div class="step-num">3</div><div class="step-title">Life Event <span style="font-size:0.7rem;color:var(--text-3);font-weight:400;">(optional)</span></div></div><div class="step-body"><div class="event-options" style="margin-top:1rem;">${evHtml}</div></div></div>
+    <div class="step-card"><div class="step-head"><div class="step-num" style="background:var(--lml-green);color:white;">4</div><div class="step-title">Process & Release</div></div><div class="step-body"><div style="background:var(--lml-green-l);border-radius:10px;padding:12px;margin-top:1rem;font-size:0.78rem;color:var(--lml-green-d);line-height:2;">✓ Income: ₹${gross.toLocaleString('en-IN')} (score ${tState.score}/10)<br>${tState.eventId!=='none'?'⚠️ Event: '+tState.eventName:'✓ No life event'}</div><button class="process-btn" onclick="processMonth()">▶ Process Month ${state.month} → Release to Student</button></div></div>`;
+}
+
+function adjustScore(d){
+  tState.score=Math.max(1,Math.min(10,tState.score+d));
+  const p=state.profession;const g=Math.round(p.income*tState.score/10);
+  const sv=document.getElementById('tp-score-val'),sp=document.getElementById('tp-score-preview'),ip=document.getElementById('tp-income-preview');
+  if(sv)sv.textContent=tState.score;if(sp)sp.textContent=tState.score;if(ip)ip.textContent='₹'+g.toLocaleString('en-IN');
+}
+function pickEvent(id,pct,name){tState.eventId=id;tState.eventPct=pct;tState.eventName=name;renderTeacherPanel();}
+function processMonth(){
+  state.activityScore=tState.score;
+  state.pendingEvent=tState.eventPct>0?{pct:tState.eventPct,name:tState.eventName}:null;
+  ['bucket-ef','bucket-st','bucket-lt'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=0;});
+  state.wantsChosen=[];
+  buildDashboard();
+  tState.phase='waiting';
+  document.getElementById('waiting-overlay').classList.remove('show');
+  switchView('student');
+  showToast('Month '+state.month+' released!');
+}
+function startNextMonth(){
+  state.month++;state.wantsChosen=[];state.pendingEvent=null;state.zeroSaveWarned=false;
+  tState={score:7,eventId:'none',eventPct:0,eventName:'',phase:'setup'};
+  ['bucket-ef','bucket-st','bucket-lt'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=0;});
+  document.getElementById('waiting-overlay').classList.add('show');
+  renderTeacherPanel();
+  showToast('Month '+state.month+' — set score then process!');
+}
+function switchView(view){
+  const panel=document.getElementById('teacher-panel');
+  const vtS=document.getElementById('vt-student'),vtT=document.getElementById('vt-teacher');
+  if(view==='teacher'){panel.classList.add('open');vtT.classList.add('active');vtS.classList.remove('active');renderTeacherPanel();}
+  else{panel.classList.remove('open');vtS.classList.add('active');vtT.classList.remove('active');}
+}
+
+// ═══════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════
+async function syncClassFromSheet() {
+  if (!currentClassId) return;
+  const ok = await syncFromSheet(currentClassId);
+  if (ok) {
+    const cls = teacherData.classes.find(c => c.id === currentClassId);
+    if (cls) {
+      renderClassroomStudents(cls);
+      renderMonthControl(cls);
+      updateTeacherStats();
+      document.getElementById('cr-meta').textContent = cls.students.length + ' students · Month ' + cls.currentMonth;
+      document.getElementById('cr-students-label').textContent = 'Students (' + cls.students.length + ')';
+    }
+  }
+}
+
+function saveAndExit() {
+  // Save financial data to class if in a real class
+  if (state.classId) {
+    saveToSheet(state.classId);
+  }
+  // Reset student state
+  state = {
+    name:'Student', profession:null, goal:null,
+    month:1, activityScore:7,
+    efSaved:0, stSaved:0, ltSaved:0,
+    wantsChosen:[], totalSaved:0,
+    isDemo:false, pendingEvent:null,
+    zeroSaveWarned:false, totalBalance:0,
+    netIncome:0, grossIncome:0, tax:0,
+    fixedExp:0, efTarget:0, totalExpenses:0,
+    wantsCap:0, studentId:null, classId:null,
+  };
+  selectedProf = null;
+  selectedGoal = null;
+  document.getElementById('waiting-overlay').classList.remove('show');
+  document.getElementById('demo-toggle-bar').style.display = 'none';
+  showToast('Progress saved! See you next class. 👋');
+  setTimeout(() => showPage('page-home'), 1500);
+}
+
+function logoutStudent() {
+  saveAndExit();
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ═══════════════════════════════════════════════
+// SCHOOL SETUP — Option B implementation
+// ═══════════════════════════════════════════════
+function initSetupPage() {
+  // Show current URL if connected
+  const current = sheetURL;
+  if (current && current !== '%%SHEET_URL%%') {
+    document.getElementById('setup-status-card').style.display = 'block';
+    document.getElementById('setup-current-url').textContent = current;
+    document.getElementById('setup-use-saved').style.display = 'block';
+    document.getElementById('setup-url-input').value = current;
+  }
+}
+
+function useSavedURL() {
+  document.getElementById('setup-url-input').value = sheetURL;
+  document.getElementById('setup-url-input').style.borderColor = 'var(--green)';
+}
+
+function downloadUpdatedFile() {
+  const url = document.getElementById('setup-url-input').value.trim();
+  if (!url || !url.includes('script.google.com')) {
+    showToast('Please paste your Google Sheet URL first');
+    return;
+  }
+
+  // Save to session too
+  sheetURL = url;
+  localStorage.setItem('smli_sheet_url', url);
+
+  // Read current HTML and replace the placeholder with real URL
+  fetch(window.location.href)
+    .then(r => r.text())
+    .then(html => {
+      // Replace the placeholder URL with the real one
+      const updated = html.replace(
+        "const EMBEDDED_SHEET_URL = '%%SHEET_URL%%';",
+        "const EMBEDDED_SHEET_URL = '" + url + "';"
+      );
+
+      // Create download
+      const blob = new Blob([updated], { type: 'text/html' });
+      const a    = document.createElement('a');
+      a.href     = URL.createObjectURL(blob);
+      a.download = 'smli-platform.html';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showToast('✅ Downloaded! Share this file with your students.');
+    })
+    .catch(() => {
+      // If fetch fails (local file), do it differently
+      showToast('Opening file for manual save... use Ctrl+S to save');
+      // Alternative: just save URL and instruct
+      showToast('URL saved! Students on this device can now join.');
+    });
+}
+
+function saveURLThisSession() {
+  const url = document.getElementById('setup-url-input').value.trim();
+  if (!url || !url.includes('script.google.com')) {
+    showToast('Please paste your Google Sheet URL first');
+    return;
+  }
+  sheetURL = url;
+  localStorage.setItem('smli_sheet_url', url);
+  showToast('✅ Saved for this session! Students can join on this device.');
+}
+
+// Show setup page and init it
+const origShowPage = showPage;
+
+// Init
+buildProfGrid();buildGoalGrid();
+
+// Auto-show setup hint if no sheet URL configured
+window.addEventListener('load', () => {
+  const hasURL = sheetURL && sheetURL !== '%%SHEET_URL%%';
+  if (!hasURL) {
+    // Show small hint on home page after 2 seconds
+    setTimeout(() => {
+      showToast('⚙️ First time? Tap the gear icon to set up your sheet.');
+    }, 2000);
+  }
+});
+</script>
+</body>
+</html>
